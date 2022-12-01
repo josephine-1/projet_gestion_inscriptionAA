@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container tab">
+      <div class="search-hero">
+        <input class="form-controlMe" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Rechercher...">
+      </div> 
+        <table class="table">
+            <thead class="bg-primary">
+              <tr>
+                <th scope="col">Prenom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">email</th>
+                <th scope="col">Matricule</th>
+                <th scope="col">Role</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let list of list | paginate: { itemsPerPage: 12, currentPage: pages } | filter:searchText">
+                <td *ngIf="list.etat==1">{{list.prenom}}</td>
+                <td *ngIf="list.etat==1">{{list.nom}}</td>
+                <td *ngIf="list.etat==1">{{list.email}}</td>
+                <td *ngIf="list.etat==1">{{list.matricule}}</td>
+                <td *ngIf="list.etat==1">{{list.role}}</td>
+                <td *ngIf="list.etat==1"  class="d-flex justify-center">
+                    <a href=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.2594 3.59997L5.04936 12.29C4.73936 12.62 4.43936 13.27 4.37936 13.72L4.00936 16.96C3.87936 18.13 4.71936 18.93 5.87936 18.73L9.09936 18.18C9.54936 18.1 10.1794 17.77 10.4894 17.43L18.6994 8.73997C20.1194 7.23997 20.7594 5.52997 18.5494 3.43997C16.3494 1.36997 14.6794 2.09997 13.2594 3.59997V3.59997Z" stroke="#0D6EFD" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.89 5.04999C12.0996 6.39084 12.7486 7.62412 13.735 8.55623C14.7214 9.48835 15.9894 10.0665 17.34 10.2M3 22H21" stroke="#0D6EFD" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg></a>
+                    <a href=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17.1496 13.82L14.1096 16.86M6.84961 13.82H17.1496" stroke="#0D6EFD" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.84961 10.18L9.88961 7.14001M17.1496 10.18H6.84961" stroke="#0D6EFD" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg></a>
+                    <a href=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.4108 18.09L15.5908 20.91M18.4108 20.91L15.5908 18.09M12.0008 21.81C10.1808 21.81 8.37078 21.35 6.99078 20.43C4.57078 18.81 4.57078 16.17 6.99078 14.56C9.74078 12.72 14.2508 12.72 17.0008 14.56M12.1608 10.87C12.0608 10.86 11.9408 10.86 11.8308 10.87C10.683 10.831 9.59542 10.3468 8.79841 9.51995C8.0014 8.69307 7.55752 7.58844 7.56078 6.43999C7.56078 3.98999 9.54078 1.99999 12.0008 1.99999C12.5832 1.98948 13.162 2.0938 13.7041 2.30697C14.2462 2.52014 14.741 2.838 15.1602 3.2424C15.5795 3.6468 15.915 4.12982 16.1476 4.66388C16.3802 5.19794 16.5053 5.77258 16.5158 6.35499C16.5263 6.9374 16.422 7.51618 16.2088 8.05828C15.9956 8.60038 15.6778 9.09518 15.2734 9.51444C14.869 9.9337 14.386 10.2692 13.8519 10.5018C13.3178 10.7344 12.7432 10.8595 12.1608 10.87V10.87Z" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg></a>
+                        
+                        
+                </td>
+              </tr>
+            </tbody>
+          </table> 
+    </div>
+    <div class="container ">
+      <div class="pagination">
+    <pagination-controls  (pageChange)="pages = $event"></pagination-controls>
+  </div>
+  </div>
+</body>
+</html>
