@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+
+import { PageUserComponent } from './page-user/page-user.component';
+
+
+
 import{ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 
@@ -23,12 +28,15 @@ import { ModifierComponent } from './modifier/modifier.component';
 
 
 
+
 import { InscriptionComponent } from './inscription/inscription.component';
 
 
 @NgModule({
+  imports: [BrowserModule, NgxPaginationModule,  Ng2SearchPipeModule, FormsModule ],
   declarations: [
     AppComponent,
+
 
 
     PageConnexionComponent
@@ -52,6 +60,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
     AppRoutingModule
 
 
+
     InscriptionComponent
   ],
   imports: [
@@ -62,8 +71,11 @@ import { InscriptionComponent } from './inscription/inscription.component';
     
 
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+
+  bootstrap: [AppComponent],
+ 
 
 })
 export class AppModule { }

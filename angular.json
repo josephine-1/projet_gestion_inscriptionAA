@@ -52,8 +52,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss"
+
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
@@ -119,11 +121,9 @@
             ],
             "styles": [
 
-              "src/styles.scss",
 
-
-
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss"
 
 
             ],
@@ -135,7 +135,11 @@
   },
   "cli": {
 
+
+    "analytics": false
+
     "analytics": "d9672f25-1657-4c01-9bb8-cb443023bec3"
+
 
   }
 }
