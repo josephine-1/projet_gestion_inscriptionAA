@@ -1,8 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularPaginatorModule } from 'angular-paginator';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableauAdmComponent } from './tableau-adm/tableau-adm.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,10 +16,12 @@ import { ModifierComponent } from './modifier/modifier.component';
 
 
 
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     NavbarComponent,
     TableauAdmComponent,
     TableauAdmArchiveComponent,
@@ -30,6 +35,16 @@ import { ModifierComponent } from './modifier/modifier.component';
     FormsModule,
     Ng2SearchPipeModule,
     AppRoutingModule
+
+
+    InscriptionComponent
+  ],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    
 
   ],
   providers: [],

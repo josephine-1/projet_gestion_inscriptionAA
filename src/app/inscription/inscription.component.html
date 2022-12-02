@@ -1,0 +1,421 @@
+<div class="container" >
+  <div class="row">
+      <div class="col-md-6 offset-md-3">
+          <h3 class="text-primary" style="margin-left: 25%;">FORMULAIRE D'INSCRIPTION</h3>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
+                  <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                      <div *ngIf="f['firstName']['errors']['required']">First Name is required</div>
+                  </div>
+              </div> <br>
+              <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" />
+                  <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                      <div *ngIf="f['lastName']errors['required']">Last Name is required</div>
+                  </div>
+              </div> <br>
+              <div class="form-group">
+                <label>role</label>
+              <!--   <input type="text" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" /> -->
+
+
+                <select name="roles" id="roles" formControlName="role" class="form-control"[ngClass]="{ 'is-invalid': submitted && f['role'].errors }" class="form-select is-valid" id="validation04" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" required>
+        
+                  <option selected disabled value="">selectionner</option>
+                  <option value="admin" name='roles'>admin</option>
+                  <option value="user" name='roles'>user</option>
+                </select>
+
+
+                <div *ngIf="submitted && f['role'].errors" class="invalid-feedback">
+                    <div *ngIf="f['role']errors['required']">Last Name is required</div>
+                </div>
+            </div> <br>
+              <div class="form-group">
+                  <label>Email</label>
+                  <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                      <div *ngIf="f['email']['errors']['required']">Email is required</div>
+                      <div *ngIf="f['email']['errors']['email']">Email must be a valid email address</div>
+                  </div>
+              </div> <br>
+              <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+                  <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                      <div *ngIf="f['password']['errors']['required']">Password is required</div>
+                      <div *ngIf="f['password']['errors']['minlength']">Password must be at least 6 characters</div>
+                  </div>
+              </div> <br>
+
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                    <div *ngIf="f['password']['errors']['required']">Password is required</div>
+                    <div *ngIf="f['password']['errors']['minlength']">Password must be at least 6 characters</div>
+                </div>
+            </div> <br>
+              <div class="form-group">
+                  <button class="btn btn-primary">S'inscrire</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container mb-2" >
+  <div [hidden]="submitted">
+    <h1 class="text-primary">FORMULAIRE D'INSCRIPTION</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #inscriptionForm="ngForm">
+    
+    <div class="form-group" class="col-md-6">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="nom" placeholder="nom" [ngClass]="{'is-invalid': submitted && f['nom'].errors}"
+      required [(ngModel)]="model.nom" name="nom"
+      #nom="ngModel"/>
+
+      <div [hidden]="nom.valid || nom.pristine" class="alert alert-danger">Champ requis</div>
+    </div>
+
+
+    <div class="form-group" class="col-md-6">
+      <label for="name">Prenom</label>
+      <input type="text" class="form-control" id="prenom" placeholder="prenom" [ngClass]="{'is-invalid': submitted && f['prenom'].errors}"
+      required [(ngModel)]="model.prenom" name="prenom"
+      #prenom="ngModel" />
+
+      <div [hidden]="prenom.valid || prenom.pristine" class="alert alert-danger">Champ requis</div>
+    </div>
+
+    <div class="form-group" class="col-md-6" >
+      <label for="name">Email</label>
+      <input type="text" class="form-control" id="email" placeholder="email" [ngClass]="{'is-invalid': submitted && f['email'].errors}"
+      required [(ngModel)]="model.email" name="email"
+      #email="ngModel"/>
+
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Champ requis</div>
+       
+      <div *ngIf="submitted f['email'].errors.required" class="invalid-feedback">
+        
+        <div *ngIf="f['email'].errors email">email must be a valid email address</div>
+
+      </div>
+
+    </div>
+
+    <div class="form-group" class="col-md-6">
+      <label for="name">Role</label>
+      <input type="text" class="form-control" id="role" placeholder="role" [ngClass]="{'is-invalid': submitted && f['role'].errors}"
+      required [(ngModel)]="model.role" name="role"
+      #role="ngModel"/>
+
+      <div [hidden]="role.valid || role.pristine" class="alert alert-danger">Champ requis</div>
+    </div>
+
+    <div class="form-group" class="col-md-6">
+      <label for="name">motdepasse</label>
+      <input type="password" class="form-control" id="motdepasse" placeholder="motdepasse" [ngClass]="{'is-invalid': submitted && f['motdepasse'].errors}"
+      required [(ngModel)]="model.motdepasse" name="motdepasse"
+      #motdepasse="ngModel"/>
+
+      <div [hidden]="motdepasse.valid || motdepasse.pristine" class="alert alert-danger">Champ requis</div>
+    </div>
+
+    <div class="form-group" class="col-md-6">
+      <label for="name">confirmation</label>
+      <input type="password" class="form-control" id="confirmation" placeholder="confirmation" [ngClass]="{'is-invalid': submitted && f['confirmation'].errors}"
+      required [(ngModel)]="model.confirmation" name="confirmation"
+      #confirmation="ngModel"/>
+
+      <div [hidden]="confirmation.valid || confirmation.pristine" class="alert alert-danger">Champ requis</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!inscriptionForm.form.valid">Submit</button>
+     <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button> 
+  </form>
+
+ </div>
+</div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  {{ model | json }} 
+
+<div  class="container">
+  <div [hidden]="submitted">
+
+<form class="row g-1 d-flex  m-5 bg-white needs-validation" action="inscription.php" method="POST" id="Mylogin" novalidate enctype="multipart/form-data">
+
+    <legend class="text-primary d-flex justify-content-center">FORMULAIRE D'INSCRIPTION</legend>
+
+    <span class="emailPassword" style="display: none; color:red">Password non identique</span>
+ 
+    <div class="mb-3 col-md-6">
+      
+      <label for="nom" class="form-label">nom</label>
+      <input type="text" id="nom" class="form-control" placeholder="nom" name="nom" 
+       required  [(ngModel)]="model.nom" name="nom" #name="ngModel">
+
+       <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Champ requis</div>
+       
+      </div>
+      
+        
+      <div class="valid-feedback" id="validationServer01"></div>
+      <div class="invalid-feedback" id="validationServer01">Champ invalide</div>
+      <span id="error"></span> 
+
+    
+    <div class="mb-3 col-md-6">
+      <label for="prenom" class="form-label">prenom</label>
+      <input type="text" id="prenom" class="form-control" placeholder="prenom" name="prenom" required [(ngModel)]="model.prenom" name="prenom">
+     
+      
+       <div class="valid-feedback" id="validationServer01"></div>
+      <div class="invalid-feedback" id="validationServer01">Champ invalide</div>
+      <span id="error1"></span>
+
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="email" class="form-label">email</label>
+      <input type="text" onchange="verifEmail()" id="email" class="form-control email" placeholder="email" name="email" required  [(ngModel)]="model.email">
+      <div class="valid-feedback" id="validationServer01"></div>
+      <div class="invalid-feedback" id="validationServer01">Champ invalide</div>
+      <span class="emailErreur" style="display: none; color:red">email incorrecte</span>
+
+    
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="role" class="form-label">Role</label>
+      <select name="roles" id="roles" class="form-select is-valid" id="validation04" required>
+        
+        <option selected disabled value="">selectionner</option>
+        <option value="admin" name='roles'>admin</option>
+        <option value="user" name='roles'>user</option>
+      </select>
+      <div class="valid-feedback" id="validationServer01"></div>
+      <div class="invalid-feedback" id="validationServer01">Champ invalide</div>
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="motdepasse" class="form-label">motdepasse</label>
+      <input type="password" id="motdepasse" class="form-control password" placeholder="motdepasse" name="motdepasse" required  [(ngModel)]="model.motdepasse">
+     
+
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="confirmation" class="form-label">confirmation</label>
+      
+   
+    </div>
+    <div class="mb-3 col-md-3">
+      <label for="photo" class="form-label">photo</label>
+      <input type="file" name="photo" id="validation07" class="form-control" placeholder="photo">
+    </div>
+    <div class="">
+      <button type="submit" class="btn btn-primary" id="submit" name="submit">S'inscrire</button>
+      <a  href="" style="text-decoration:none;float: right;">connectez-vous?</a>
+    </div>
+  </form>
+</div>
+</div>
+ -->
