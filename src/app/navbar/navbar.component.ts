@@ -8,9 +8,15 @@ import list from '../modele/list.json';
 })
 export class NavbarComponent {
   list!:Array<any>
+
   constructor(){}
 
   ngOnInit(): void {
     this.list = list
 }
+/* active(active_:string)
+      {
+        this.active_ = null,
+        alert("hello");
+      } */
 }
