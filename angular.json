@@ -55,7 +55,9 @@
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -118,6 +120,9 @@
             "styles": [
 
               "src/styles.scss",
+
+
+
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 
@@ -131,5 +136,6 @@
   "cli": {
 
     "analytics": "d9672f25-1657-4c01-9bb8-cb443023bec3"
+
   }
 }

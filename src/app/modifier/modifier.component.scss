@@ -1,0 +1,14 @@
+.container{
+  width: 40%;
+  margin-top:80px ;
+  display: flex;
+  justify-content: center;
+
+    .modifier{
+      width: inherit;
+      input{
+        width: 100%;
+
+      }
+    }
+}
