@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import list from '../modele/list.json';
 
 @Component({
-  selector: 'app-tableau-adm',
-  templateUrl: './tableau-adm.component.html',
-  styleUrls: ['./tableau-adm.component.scss']
+  selector: 'app-tableau-adm-archive',
+  templateUrl: './tableau-adm-archive.component.html',
+  styleUrls: ['./tableau-adm-archive.component.scss']
 })
-export class TableauAdmComponent implements OnInit {
+export class TableauAdmArchiveComponent implements OnInit {
   list!:Array<any>
   pages: number = 1;
   searchText:any;
@@ -16,3 +16,4 @@ export class TableauAdmComponent implements OnInit {
     this.list = list
   }
 }
+

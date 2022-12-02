@@ -1,0 +1,13 @@
+<div class="container">
+  <form #form="ngForm" (submit)="submit(form)">
+    <label for="username">User name
+      <input type="text" name="username" id="username" ngModel>
+    </label>
+    <label for="password">User name
+      <input type="text" name="password" id="password" ngModel>
+    </label>
+     <button type="submit">Ok</button>
+  </form>
+  Result :
+  {{result}}
+</div>
