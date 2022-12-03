@@ -7,7 +7,7 @@ import { ModifierComponent } from './modifier/modifier.component';
 
 
 const routes: Routes = [
-  { path: '', component: TableauAdmComponent },
+  { path: 'active', component: TableauAdmComponent },
   { path: 'active/modifier', component: ModifierComponent },
   { path: 'archive', component: TableauAdmArchiveComponent }
 ];

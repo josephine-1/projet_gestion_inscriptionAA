@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import list from '../modele/list.json';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-tableau-adm',

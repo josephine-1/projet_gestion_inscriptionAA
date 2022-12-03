@@ -2,9 +2,9 @@
   <h2 class="text-center text-primary">Listes des utilisateurs</h2>
 
   <div class="row ">
-    <div class="search-hero rec">
+  <!--   <div class="search-hero rec">
       <input class=" rech" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Recherche par Nom, Prenom, Email">
-    </div>
+    </div> -->
 
 <div class="cap"></div>
 
@@ -20,7 +20,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of Users | paginate:{itemsPerPage: 5, currentPage:p} | filter:searchText" class="text-center">
-        
+
           <td>{{ user.nom }}</td>
           <td>{{ user.prenom }}</td>
           <td>{{ user.email }}</td>
@@ -29,5 +29,5 @@
         </tr>
       </tbody>
     </table>
-    <pagination-controls (pageChange)="p=$event" class="text-center"></pagination-controls>
+<!--     <pagination-controls (pageChange)="p=$event" class="text-center"></pagination-controls> -->
   </div>
