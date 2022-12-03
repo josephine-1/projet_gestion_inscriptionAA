@@ -9,7 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 
 import { TableauAdmComponent } from './tableau-adm/tableau-adm.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from './app-routing.module';
 import { TableauAdmArchiveComponent } from './tableau-adm-archive/tableau-adm-archive.component';
 import { ModifierComponent } from './modifier/modifier.component';
@@ -31,6 +31,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     TableauAdmArchiveComponent
   ],
   imports: [
+    Ng2SearchPipeModule,
     AppRoutingModule,
     BrowserModule,
     ReactiveFormsModule,
