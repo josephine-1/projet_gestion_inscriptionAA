@@ -19,10 +19,10 @@
               </div> <br>
               <div class="form-group">
                 <label>role</label>
-                <input type="text" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" />
+              
 
 
-                <select name="roles" id="roles" formControlName="role" class="form-control"[ngClass]="{ 'is-invalid': submitted && f['role'].errors }" class="form-select is-valid" id="validation04" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" required>
+                <select name="roles" id="roles" formControlName="role" class="form-control"[ngClass]="{ 'is-invalid': submitted && f['role'].errors }" class="form-select" id="validation04" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" required>
 
                   <option selected disabled value="">selectionner</option>
                   <option value="admin" name='roles'>admin</option>
@@ -61,6 +61,7 @@
             </div> <br>
               <div class="form-group">
                   <button class="btn btn-primary">S'inscrire</button>
+                  <a routerLink="" style="float: right;">connexion</a>
               </div>
           </form>
       </div>

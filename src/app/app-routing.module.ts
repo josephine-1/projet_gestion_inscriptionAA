@@ -4,12 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { TableauAdmComponent } from './tableau-adm/tableau-adm.component';
 import { TableauAdmArchiveComponent } from './tableau-adm-archive/tableau-adm-archive.component';
 import { ModifierComponent } from './modifier/modifier.component';
+import { PageConnexionComponent } from './page-connexion/page-connexion.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { PageUserComponent } from './page-user/page-user.component';
 
 
 const routes: Routes = [
+  { path: '', component: PageConnexionComponent },
   { path: 'active', component: TableauAdmComponent },
   { path: 'active/modifier', component: ModifierComponent },
-  { path: 'archive', component: TableauAdmArchiveComponent }
+  { path: 'user', component: PageUserComponent },
+  { path: 'inscription', component: InscriptionComponent },
+  { path: 'active/archive', component: TableauAdmArchiveComponent },
+ 
 ];
 
 @NgModule({
