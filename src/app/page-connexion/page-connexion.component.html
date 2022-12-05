@@ -15,8 +15,7 @@
   <div class="form-group container contenue">
 <!--    <form [formGroup]="connecterForm" [ngSubmit]!="onSubmit()" > -->
   <div class="form-group mb-3 mt-5">
-    <label for="email" class="form-label" style="color: #0d6efd; " >Adresse Mail</label>
-    <input type="email" formControlmail="email"  class="form-control" id="email" placeholder="name@example.com" style="height: 50px;" [ngClass]="{}">
+  
     <div class="form-group">
       <label class="center-block" style="color: #0d6efd; ">Adresse mail:
         <input type="text" class="form-control" formControlName="email" id="email" placeholder="name@example.com" style="width: 600px;" >
@@ -45,25 +44,24 @@
 
 
 </div>
-    <label for="password" class="form-label"  style="color: #0d6efd; ">Mot de passe</label>
-    <input type="password" class="form-control" id="password" placeholder="votre mot de passe" style="height: 50px;">
+   
   </div>
 
   <button class="btn btn-primary mt-5">CONNECTER</button>
-   <button type="submit"
+   <!-- <button type="submit"
             [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">
            Connecter
         </button>
         <div class="form-group">
           <button class="btn btn-primary">Connecter</button>
-      </div>
+      </div> -->
 
 
 
 </div>
-</form> -->
-<p>Form value: {{ angForm.value | json }}</p>
-<p>Form status: {{ angForm.status | json }}</p>
+</form> 
+<!-- <p>Form value: {{ angForm.value | json }}</p>
+<p>Form status: {{ angForm.status | json }}</p> -->
 </div>
 
 </body>
