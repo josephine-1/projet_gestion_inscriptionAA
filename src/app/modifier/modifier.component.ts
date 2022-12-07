@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CrudService } from '../service/service.service';
+
+
 
 @Component({
   selector: 'app-modifier',
@@ -9,12 +13,35 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ModifierComponent implements OnInit{
   registerForm!: FormGroup
   submitted = false;
-  constructor(private formBuilder: FormBuilder) {}
+  getId: any;
+  updateForm!: FormGroup;
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private ngZone: NgZone,
+              private activatedRoute: ActivatedRoute,
+              private crudService: CrudService
+    ) {
+      this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.crudService.GetUtilisateur(this.getId).subscribe((res) => {
+        this.updateForm.setValue({
+          prenom: res['prenom'],
+          nom: res['nom'],
+          email: res['email'],
+        });
+      });
+
+      this.updateForm = this.formBuilder.group({
+        prenom: [''],
+        nom: [''],
+        email: [''],
+      });
+    }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      prenom: ['', Validators.required],
+      nom: ['', Validators.required],
       email: [
         '',
         [
@@ -39,5 +66,16 @@ export class ModifierComponent implements OnInit{
     }
 
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
+  }
+  onUpdate(): any {
+    this.crudService.updateUtilisateur(this.getId, this.updateForm.value).subscribe(
+      () => {
+        console.log('Data updated successfully!');
+        this.ngZone.run(() => this.router.navigateByUrl('/books-list'));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
