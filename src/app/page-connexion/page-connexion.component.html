@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- Page de connexion -->
+  <div class="container mt-5">
+  <h5 class="title text-center " style="color: #0d6efd; ">Formulaire de connexion</h5>
+  <form [formGroup]="angForm"    ngSubmit="onSubmit()">
+  <div class="form-group container contenue">
+<!--    <form [formGroup]="connecterForm" [ngSubmit]!="onSubmit()" > -->
+  <div class="form-group mb-3 mt-5">
+
+    <div class="form-group">
+      <label class="center-block" style="color: #0d6efd; ">Adresse mail:
+        <input type="text" class="form-control" formControlName="email" id="email" placeholder="name@example.com" style="width: 600px;" >
+      </label>
+    </div>
+  </div>
+<!-- pour controle -->
+<div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+  <div *ngIf="angForm.controls['email'].errors && angForm.controls['email'].errors['required']">
+  l'adresse mail est obligatoire
+</div>
+ <div *ngIf="angForm.controls['email'].errors && angForm.controls['email'].errors['email']">le format de l'email est invalide</div>
+
+</div>
+
+  <div class="form-group mb-3 mt-5">
+    <label class="center-block" style="color: #0d6efd; ">Mot de passe:
+      <input type="password" class="form-control" formControlName="password" placeholder="votre mot de passe" style="width: 600px;">
+    </label>
+    <!-- pour controle -->
+<div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+  <div *ngIf="angForm.controls['password'].errors && angForm.controls['password'].errors['required']">
+   Mot de passe obligatoire
+</div>
+<div *ngIf="angForm.controls['password'].errors && angForm.controls['password'].errors[' minlength']">Le mot de passe doit comporté au moins 6 caractéres </div>
+
+
+</div>
+
+  </div>
+
+  <button class="btn btn-primary mt-5">CONNECTER</button>
+  <a routerLink="inscription" style="float:right ;">S'inscrire</a>
+   <!-- <button type="submit"
+            [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">
+           Connecter
+        </button>
+        <div class="form-group">
+          <button class="btn btn-primary">Connecter</button>
+      </div> -->
+
+
+
+</div>
+
+</form>
+
+<!-- <p>Form value: {{ angForm.value | json }}</p>
+<p>Form status: {{ angForm.status | json }}</p> -->
+</div>
+
+</body>
+</html>
