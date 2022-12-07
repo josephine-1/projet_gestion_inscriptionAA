@@ -52,10 +52,15 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+=======
 
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
 
+>>>>>>> main
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
@@ -120,12 +125,17 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+=======
 
 
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
 
 
+>>>>>>> main
             ],
             "scripts": []
           }
@@ -134,6 +144,20 @@
     }
   },
   "cli": {
+<<<<<<< HEAD
     "analytics": false
+=======
+<<<<<<< HEAD
+    "analytics": "80315f76-6b9e-4864-b135-6064efd5069c"
+=======
+
+
+    "analytics": false
+
+    "analytics": "d9672f25-1657-4c01-9bb8-cb443023bec3"
+
+
+>>>>>>> main
+>>>>>>> MHDLamine
   }
 }
