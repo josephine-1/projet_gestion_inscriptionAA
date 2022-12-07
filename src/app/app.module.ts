@@ -15,6 +15,7 @@ import { TableauAdmArchiveComponent } from './tableau-adm-archive/tableau-adm-ar
 import { ModifierComponent } from './modifier/modifier.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     TableauAdmArchiveComponent
   ],
   imports: [
+
     Ng2SearchPipeModule,
     AppRoutingModule,
     BrowserModule,
@@ -44,7 +46,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
 
   providers: [],

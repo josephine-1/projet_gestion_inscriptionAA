@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import list from '../modele/list.json';
+/* import list from '../modele/list.json'; */
+import { CrudService } from './../service/service.service';
 
 
 @Component({
@@ -8,12 +9,25 @@ import list from '../modele/list.json';
   styleUrls: ['./tableau-adm.component.scss']
 })
 export class TableauAdmComponent implements OnInit {
+  Utilisateur: any = [];
   list!:Array<any>
   pages: number = 1;
   searchText:any;
-  constructor(){}
+  constructor(private crudService: CrudService) {}
 
   ngOnInit(): void {
-    this.list = list
+    this.crudService.GetUtilisateurs().subscribe((res) => {
+      console.log(res);
+      this.Utilisateur = res;
+    });
+  }
+
+  delete(id: any, i: any) {
+    console.log(id);
+    if (window.confirm('Do you want to go ahead?')) {
+      this.crudService.deleteUtilisateur(id).subscribe((res) => {
+        this.Utilisateur.splice(i, 1);
+      });
+    }
   }
 }
