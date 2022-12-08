@@ -7,5 +7,5 @@ export class Utilisateur {
   role!:String;
   matricule!:String;
   etat!:Boolean;
-  telephone!:Number;
+  
 }

@@ -1,4 +1,4 @@
-export class inscription {
+/* export class inscription {
 
     constructor(
         public nom: string,
@@ -10,4 +10,4 @@ export class inscription {
         
 
     ) { }
-}
+} */

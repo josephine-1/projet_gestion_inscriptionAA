@@ -4,17 +4,17 @@
           <h3 class="text-primary" style="margin-left: 25%;">FORMULAIRE D'INSCRIPTION</h3>
           <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
               <div class="form-group">
-                  <label>First Name</label>
-                  <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
-                  <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
-                      <div *ngIf="f['firstName']['errors']['required']">First Name is required</div>
+                  <label>nom</label>
+                  <input type="text" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }" />
+                  <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
+                      <div *ngIf="f['nom']['errors']['required']">nom is required</div>
                   </div>
               </div> <br>
               <div class="form-group">
-                  <label>Last Name</label>
-                  <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" />
-                  <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
-                      <div *ngIf="f['lastName']errors['required']">Last Name is required</div>
+                  <label>prenom</label>
+                  <input type="text" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }" />
+                  <div *ngIf="submitted && f['prenom'].errors" class="invalid-feedback">
+                      <div *ngIf="f['prenom']errors['required']">prenom is required</div>
                   </div>
               </div> <br>
               <div class="form-group">
@@ -31,7 +31,7 @@
 
 
                 <div *ngIf="submitted && f['role'].errors" class="invalid-feedback">
-                    <div *ngIf="f['role']errors['required']">Last Name is required</div>
+                    <div *ngIf="f['role']errors['required']">prenom is required</div>
                 </div>
             </div> <br>
               <div class="form-group">
@@ -60,7 +60,7 @@
                 </div>
             </div> <br>
               <div class="form-group">
-                  <button class="btn btn-primary">S'inscrire</button>
+                  <button class="btn btn-primary" type="submit">S'inscrire</button>
                   <a routerLink="" style="float: right;">connexion</a>
               </div>
           </form>
@@ -184,7 +184,7 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #inscriptionForm="ngForm">
 
     <div class="form-group" class="col-md-6">
-      <label for="name">Nom</label>
+      <label for="name">nom</label>
       <input type="text" class="form-control" id="nom" placeholder="nom" [ngClass]="{'is-invalid': submitted && f['nom'].errors}"
       required [(ngModel)]="model.nom" name="nom"
       #nom="ngModel"/>
@@ -194,7 +194,7 @@
 
 
     <div class="form-group" class="col-md-6">
-      <label for="name">Prenom</label>
+      <label for="name">prenom</label>
       <input type="text" class="form-control" id="prenom" placeholder="prenom" [ngClass]="{'is-invalid': submitted && f['prenom'].errors}"
       required [(ngModel)]="model.prenom" name="prenom"
       #prenom="ngModel" />
