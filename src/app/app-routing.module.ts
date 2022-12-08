@@ -8,7 +8,6 @@ import { PageConnexionComponent } from './page-connexion/page-connexion.componen
 import { InscriptionComponent } from './inscription/inscription.component';
 import { PageUserComponent } from './page-user/page-user.component';
 
-
 const routes: Routes = [
   { path: '', component: PageConnexionComponent },
   { path: 'active', component: TableauAdmComponent },

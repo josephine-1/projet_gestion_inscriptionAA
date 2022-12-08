@@ -24,7 +24,6 @@ let Utilisateur = new Schema(
     etat: {
       type: Boolean,
     },
-    
   },
   {
     collection: "utilisateur",
