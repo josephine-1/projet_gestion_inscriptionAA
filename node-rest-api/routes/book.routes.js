@@ -6,6 +6,7 @@ let Utilisateur = require("../model/Utilisateur");
 
 // Add Utilisateur
 utilisateurRoute.route("/add-utilisateur").post((req, res, next) => {
+
   Utilisateur.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -28,6 +29,7 @@ utilisateurRoute.route("/").get((req, res) => {
 
 // Get Utilisateur
 utilisateurRoute.route("/read-utilisateur/:id").get((req, res) => {
+ 
   Utilisateur.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error);
@@ -38,7 +40,7 @@ utilisateurRoute.route("/read-utilisateur/:id").get((req, res) => {
 });
 
 // Update Utilisateur
-utilisateurRoute.route("/update-utilisateur/:id").put((req, res, next) => {
+utilisateurRoute.route("/modifier/:id").put((req, res, next) => {
   Utilisateur.findByIdAndUpdate(
     req.params.id,
     {

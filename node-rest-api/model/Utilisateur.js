@@ -24,9 +24,6 @@ let Utilisateur = new Schema(
     etat: {
       type: Boolean,
     },
-    telephone: {
-      type: Number,
-    },
   },
   {
     collection: "utilisateur",
