@@ -54,13 +54,15 @@ this.registerForm = this.formBuilder.group({
           return;
       }
       this.crudService.AddUtilisateur(this.registerForm.value).subscribe(
-        () => {
+        (res) => {
           console.log('Data added successfully!');
-          this.ngZone.run(() => this.router.navigateByUrl('/'));
+          console.log(res);
+
+          // this.ngZone.run(() => this.router.navigateByUrl('/'));
         },
-        (err) => {
+       /*  (err) => {
           console.log(err);
-        }
+        } */
       );
     
 

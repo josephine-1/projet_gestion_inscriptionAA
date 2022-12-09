@@ -22,7 +22,7 @@ export class CrudService {
 
   // Add
   AddUtilisateur(data: Utilisateur): Observable<any> {
-    let API_URL = `${this.REST_API}/add-utilisteur`;
+    let API_URL = `${this.REST_API}/add-utilisateur`;
     return this.httpClient
       .post(API_URL, data)
       .pipe(catchError(this.handleError));
