@@ -34,9 +34,12 @@ export class ModifierComponent implements OnInit {
 
     });
 
-  }
+    }
 
-  ngOnInit() {}
+  ngOnInit() {
+   
+
+  }
 
   onUpdate(): any {
     this.crudService.updateUtilisateur(this.getId, this.updateForm.value).subscribe(
