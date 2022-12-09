@@ -9,16 +9,15 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { PageUserComponent } from './page-user/page-user.component';
 import { AuthGuard } from './auth.guard';
 
-
 const routes: Routes = [
   /* { path: '', pathMatch: 'full', redirectTo: 'connexion'}, */
   { path: '', component: PageConnexionComponent },
   { path: 'active', component: TableauAdmComponent },
-  { path: 'active/modifier', component: ModifierComponent },
+  { path: 'modifier/:id', component: ModifierComponent },
   { path: 'user', component: PageUserComponent },
   { path: 'inscription', component: InscriptionComponent },
-  { path: 'active/archive', component: TableauAdmArchiveComponent },
- 
+  { path: 'archive', component: TableauAdmArchiveComponent },
+
 ];
 
 @NgModule({

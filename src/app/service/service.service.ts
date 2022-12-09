@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Utilisateur } from './Utilisateur';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import {
+import { 
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
@@ -22,7 +22,7 @@ export class CrudService {
 
   // Add
   AddUtilisateur(data: Utilisateur): Observable<any> {
-    let API_URL = `${this.REST_API}/add-utilisteur`;
+    let API_URL = `${this.REST_API}/add-utilisateur`;
     return this.httpClient
       .post(API_URL, data)
       .pipe(catchError(this.handleError));
@@ -32,10 +32,10 @@ export class CrudService {
   GetUtilisateurs() {
     return this.httpClient.get(`${this.REST_API}`);
   }
-
   // Get single object
   GetUtilisateur(id: any): Observable<any> {
-    let API_URL = `${this.REST_API}/read-utilisteur/${id}`;
+    console.log(id);
+    let API_URL = `${this.REST_API}/read-utilisateur/${id}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
       map((res: any) => {
         return res || {};
@@ -43,10 +43,9 @@ export class CrudService {
       catchError(this.handleError)
     );
   }
-
   // Update
   updateUtilisateur(id: any, data: any): Observable<any> {
-    let API_URL = `${this.REST_API}/update-utilisteur/${id}`;
+    let API_URL = `${this.REST_API}/modifier/${id}`;
     return this.httpClient
       .put(API_URL, data, { headers: this.httpHeaders })
       .pipe(catchError(this.handleError));

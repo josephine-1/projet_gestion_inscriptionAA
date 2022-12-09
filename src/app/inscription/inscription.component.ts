@@ -1,6 +1,8 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit, NgZone } from '@angular/core';
 /* import { inscription } from '../model/inscription'; */
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CrudService } from '../service/service.service';
 
 @Component({
   selector: 'app-inscription',
@@ -11,12 +13,31 @@ export class InscriptionComponent implements OnInit{
   registerForm!: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder,
+              private router: Router,
+              private ngZone: NgZone,
+              private crudService: CrudService,
+
+    ) { 
+
+this.registerForm = this.formBuilder.group({
+
+  nom: [''],
+  prenom: [''],
+  role: [''],
+  email: [''],
+  password: [''],
+  matricule: [''],
+  etat: [true],
+
+
+});
+      }
 
   ngOnInit() {
       this.registerForm = this.formBuilder.group({
-          firstName: ['', Validators.required],
-          lastName: ['', Validators.required],
+          nom: ['', Validators.required],
+          prenom: ['', Validators.required],
           role: ['', Validators.required],
           email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
           password: ['', [Validators.required, Validators.minLength(6)]]
@@ -26,16 +47,27 @@ export class InscriptionComponent implements OnInit{
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
-  onSubmit() {
+  onSubmit(): any {
       this.submitted = true;
-
-      // stop here if form is invalid
-      if (this.registerForm.invalid) {
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
           return;
       }
+      this.crudService.AddUtilisateur(this.registerForm.value).subscribe(
+        (res) => {
+          console.log('Data added successfully!');
+          console.log(res);
 
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
-  }
+          // this.ngZone.run(() => this.router.navigateByUrl('/'));
+        },
+       /*  (err) => {
+          console.log(err);
+        } */
+      );
+    
+
+      /* alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))*/
+   }
 }
 
    
