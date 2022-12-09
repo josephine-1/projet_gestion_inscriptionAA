@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone  } from '@angular/core';
 /* import list from '../modele/list.json'; */
 import { CrudService } from './../service/service.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -10,10 +12,29 @@ import { CrudService } from './../service/service.service';
 })
 export class TableauAdmComponent implements OnInit {
   Utilisateur: any = [];
-  list!:Array<any>
   pages: number = 1;
   searchText:any;
-  constructor(private crudService: CrudService) {}
+  updateForm!: FormGroup;
+  constructor(
+    public formBuilder: FormBuilder,
+    private router: Router,
+    private ngZone: NgZone,
+    private activatedRoute: ActivatedRoute,
+    private crudService: CrudService,
+    ) {
+      this.updateForm = this.formBuilder.group({
+        etat: [false]
+      });
+
+
+   /*    this.crudService.GetUtilisateur(this.getId).subscribe((res) => {
+        this.updateForm.setValue({
+          etat: res['etat']
+        });
+
+      }); */
+
+    }
 
   ngOnInit(): void {
     this.crudService.GetUtilisateurs().subscribe((res) => {
@@ -22,12 +43,19 @@ export class TableauAdmComponent implements OnInit {
     });
   }
 
-  delete(id: any, i: any) {
+  delete(id: any) {
+
     console.log(id);
-    if (window.confirm('Do you want to go ahead?')) {
-      this.crudService.deleteUtilisateur(id).subscribe((res) => {
-        this.Utilisateur.splice(i, 1);
-      });
+    /* if (window.confirm('Voulez-vous vraiment supprimer ?')) { */
+      this.crudService.updateUtilisateur(id, this.updateForm.value).subscribe(
+        () => {
+          console.log('Data updated successfully!');
+           this.ngZone.run(() => this.router.navigateByUrl('active'));
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
     }
   }
-}
+

@@ -24,18 +24,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let list of list | filter:searchText | paginate: { itemsPerPage: 9, currentPage: pages }">
-                <td *ngIf="list.etat==0">{{list.prenom}}</td>
-                <td *ngIf="list.etat==0">{{list.nom}}</td>
-                <td *ngIf="list.etat==0">{{list.email}}</td>
-                <td *ngIf="list.etat==0">{{list.matricule}}</td>
-                <td *ngIf="list.etat==0">{{list.role}}</td>
-                <td *ngIf="list.etat==0"  class="d-flex justify-center">
-                    <a href="">
+              <tr *ngFor="let list of Utilisateur | filter:searchText | paginate: { itemsPerPage: 9, currentPage: pages }">
+                <td *ngIf="list.etat==false">{{list.prenom}}</td>
+                <td *ngIf="list.etat==false">{{list.nom}}</td>
+                <td *ngIf="list.etat==false">{{list.email}}</td>
+                <td *ngIf="list.etat==false">{{list.matricule}}</td>
+                <td *ngIf="list.etat==false">{{list.role}}</td>
+                <td *ngIf="list.etat==false"  class="d-flex justify-center">
+                  <form   [formGroup]="updateForm" (ngSubmit)="restaurer(list._id)">
+                    <input
+                    class="form-control"
+                    type="hidden"
+                    formControlName="etat"
+                    required
+                  />
+                    <button style="border: none;background-color: white;" type="submit">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M8 12H16M12 16V8M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                    </a>
+                      </button>
+                      </form>
                 </td>
               </tr>
             </tbody>

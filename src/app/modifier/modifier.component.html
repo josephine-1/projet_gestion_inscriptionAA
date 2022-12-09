@@ -1,31 +1,39 @@
 <app-navbar></app-navbar>
 <div class="container">
-          <form class="modifier" [formGroup]="registerForm" (ngSubmit)="onUpdate()">
-              <div class="form-group">
-                  <label>Prénom</label>
-                  <input type="text" class="form-control" formControlName="prenom"  [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors}" required>
-                  <div *ngIf="submitted && f['prenom'].errors" class="invalid-feedback">
-                      <div *ngIf="f['prenom'].errors['required']">Ce champs est is requis</div>
-                  </div>
-              </div><br>
-              <div class="form-group">
-                  <label>Nom</label>
-                  <input type="text" class="form-control" formControlName="nom"  [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }" />
-                  <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
-                      <div *ngIf="f['nom'].errors['required']">Ce champs est is requis</div>
-                  </div>
-              </div><br>
-              <div class="form-group">
-                  <label>email</label>
-                  <input type="text" class="form-control" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
-                  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                      <div *ngIf="f['email']errors['required']">Ce champs est is requis</div>
-                      <div *ngIf="f['email'].errors['email']">Le format du mail est incorrect</div>
-                  </div>
-              </div><br>
-              <div class="form-group">
-                  <button class="btn btn-primary">modifier</button>
-              </div>
-          </form>
+  <form   [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+    <div class="form-group">
+      <label>prenom</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="prenom"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>nom</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="nom"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>email</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block" type="submit">Modifier</button>
+    </div>
+  </form>
 
   </div>
