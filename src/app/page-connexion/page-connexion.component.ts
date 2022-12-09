@@ -29,7 +29,7 @@ constructor(private authService: AuthService,
       return;
     }
     this.authService.seConnecter(this.angForm.value);
-    this.router.navigateByUrl('/admin');
+    this.router.navigateByUrl('/active');
   }
 
 

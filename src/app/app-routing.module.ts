@@ -11,8 +11,8 @@ import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'connexion'},
-  { path: 'connexion', component: PageConnexionComponent },
+  /* { path: '', pathMatch: 'full', redirectTo: 'connexion'}, */
+  { path: '', component: PageConnexionComponent },
   { path: 'active', component: TableauAdmComponent },
   { path: 'active/modifier', component: ModifierComponent },
   { path: 'user', component: PageUserComponent },

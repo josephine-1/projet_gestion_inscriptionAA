@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 /* import list from '../modele/list.json'; */
 import { CrudService } from './../service/service.service';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class TableauAdmComponent implements OnInit {
   pages: number = 1;
   searchText:any;
   constructor(private crudService: CrudService) {}
-
+  //service authentification
+ /*  constructor(private authService: AuthService, private router: Router) { }
+ */
   ngOnInit(): void {
     this.crudService.GetUtilisateurs().subscribe((res) => {
       console.log(res);
