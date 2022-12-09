@@ -4,6 +4,7 @@ import { __values } from 'tslib';
 import { Router } from  '@angular/router';
 import { Utilisateur } from  '../service/Utilisateur';
 import { AuthService } from  '../auth.service';
+
 @Component({
   selector: 'app-page-connexion',
   templateUrl: './page-connexion.component.html',
@@ -16,7 +17,7 @@ constructor(private authService: AuthService,
   private router: Router, private formBuilder: FormBuilder ) { }
   ngOnInit() {
     this.angForm  =  this.formBuilder.group({
-        email: ['', Validators.required],
+        email: /* ['', Validators.required] */['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         password: ['', Validators.required]
     });
   }

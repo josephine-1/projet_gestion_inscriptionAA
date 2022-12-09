@@ -15,9 +15,7 @@ export class TableauAdmComponent implements OnInit {
   pages: number = 1;
   searchText:any;
   constructor(private crudService: CrudService) {}
-  //service authentification
- /*  constructor(private authService: AuthService, private router: Router) { }
- */
+ 
   ngOnInit(): void {
     this.crudService.GetUtilisateurs().subscribe((res) => {
       console.log(res);
