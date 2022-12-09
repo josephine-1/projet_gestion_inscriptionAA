@@ -8,6 +8,7 @@ import { AngularPaginatorModule } from 'angular-paginator';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 
+
 import { TableauAdmComponent } from './tableau-adm/tableau-adm.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from './app-routing.module';
