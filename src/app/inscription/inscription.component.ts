@@ -18,7 +18,7 @@ export class InscriptionComponent implements OnInit{
               private ngZone: NgZone,
               private crudService: CrudService,
 
-    ) { 
+    ) {
 
 this.registerForm = this.formBuilder.group({
 
@@ -33,6 +33,7 @@ this.registerForm = this.formBuilder.group({
 
 });
       }
+   
 
   ngOnInit() {
       this.registerForm = this.formBuilder.group({
@@ -40,7 +41,9 @@ this.registerForm = this.formBuilder.group({
           prenom: ['', Validators.required],
           role: ['', Validators.required],
           email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-          password: ['', [Validators.required, Validators.minLength(6)]]
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          matricule: [''],
+          etat: [true],
       });
   }
 
@@ -64,31 +67,31 @@ this.registerForm = this.formBuilder.group({
           console.log(err);
         } */
       );
-    
+
 
       /* alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))*/
    }
 }
 
-   
-  
 
 
-/* role = ['admin',' user']; 
+
+
+/* role = ['admin',' user'];
 
 model = new inscription('', '' , '' , '' ,'', '' );
 registerForm!: FormGroup;
 submitted = false;
 
-  onsubmit() {this.submitted = true;} 
- 
+  onsubmit() {this.submitted = true;}
+
  constructor(private formBuilder: FormBuilder) {}
 
 ngOnInit() {
   this.registerForm = this.formBuilder.group({
     nom:    ['',Validators.required],
     prenom: ['',Validators.required],
-    email:  ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]], 
+    email:  ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     role:   ['',Validators.required],
    password: ['',Validators.required],
     confirm :['',Validators.required]
@@ -96,7 +99,7 @@ ngOnInit() {
 
   );
 
-} 
+}
 
 get f() { return this.registerForm.controls;}
 

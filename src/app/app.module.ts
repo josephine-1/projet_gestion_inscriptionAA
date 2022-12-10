@@ -6,7 +6,7 @@ import { PageConnexionComponent } from './page-connexion/page-connexion.componen
 import { AngularPaginatorModule } from 'angular-paginator';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { TableauAdmComponent } from './tableau-adm/tableau-adm.component';
 
@@ -20,35 +20,37 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 
+
 @NgModule({
   declarations:
   [
-    TableauAdmComponent,
-    PageUserComponent,
+
     NavbarComponent,
     AppComponent,
     InscriptionComponent,
     ModifierComponent,
     PageConnexionComponent,
     PageUserComponent,
-    TableauAdmArchiveComponent,
-
+    TableauAdmComponent,
+    TableauAdmArchiveComponent
   ],
   imports: [
 
     Ng2SearchPipeModule,
-   BrowserModule,
-   ReactiveFormsModule,
-    AngularPaginatorModule,
-
-    NgxPaginationModule,
-
     AppRoutingModule,
-
+    BrowserModule,
+    ReactiveFormsModule,
+    ReactiveFormsModule,
+    AngularPaginatorModule,
+    BrowserModule,
+    NgxPaginationModule,
+    FormsModule,
+    AppRoutingModule,
+    BrowserModule,
     CommonModule,
     FormsModule,
-
-    
+    ReactiveFormsModule,
+    HttpClientModule
   ],
 
   providers: [],

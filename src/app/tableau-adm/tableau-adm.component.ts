@@ -15,45 +15,42 @@ export class TableauAdmComponent implements OnInit {
   pages: number = 1;
   searchText:any;
   updateForm!: FormGroup;
+  success: string = ''
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
     private activatedRoute: ActivatedRoute,
     private crudService: CrudService,
-    ) {
-      this.updateForm = this.formBuilder.group({
-        etat: [false]
-      });
-
-
-   /*    this.crudService.GetUtilisateur(this.getId).subscribe((res) => {
-        this.updateForm.setValue({
-          etat: res['etat']
+    )
+      {
+        this.updateForm = this.formBuilder.group({
+          etat: [false]
         });
-
-      }); */
-
-    }
+      }
 
   ngOnInit(): void {
+    this.getAllUsers()
+  }
+
+  getAllUsers() {
     this.crudService.GetUtilisateurs().subscribe((res) => {
       console.log(res);
+      res = res.filter((user:any) => user.etat == true);
       this.Utilisateur = res;
     });
   }
-
+  //pour archiver
   delete(id: any) {
 
-    console.log(id);
+    console.log(this.updateForm.value);
     /* if (window.confirm('Voulez-vous vraiment supprimer ?')) { */
       this.crudService.updateUtilisateur(id, this.updateForm.value).subscribe(
         () => {
           console.log('Data updated successfully!');
+          this.success = 'Archivé avec succés';
+          this.getAllUsers();
            this.ngZone.run(() => this.router.navigateByUrl('active'));
-        },
-        (err) => {
-          console.log(err);
         }
       );
     }

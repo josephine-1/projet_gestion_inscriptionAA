@@ -24,7 +24,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let list of Utilisateur | filter:searchText | paginate: { itemsPerPage: 9, currentPage: pages }">
+              <tr *ngFor="let list of Utilisateur | filter:searchText | paginate: { itemsPerPage: 7, currentPage: pages }">
                 <td *ngIf="list.etat==false">{{list.prenom}}</td>
                 <td *ngIf="list.etat==false">{{list.nom}}</td>
                 <td *ngIf="list.etat==false">{{list.email}}</td>

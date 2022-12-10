@@ -19,7 +19,7 @@
               </div> <br>
               <div class="form-group">
                 <label>role</label>
-              
+
 
 
                 <select name="roles" id="roles" formControlName="role" class="form-control"[ngClass]="{ 'is-invalid': submitted && f['role'].errors }" class="form-select" id="validation04" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" required>
@@ -59,6 +59,9 @@
                     <div *ngIf="f['password']['errors']['minlength']">Password must be at least 6 characters</div>
                 </div>
             </div> <br>
+            <input type="hidden" formControlName="etat">
+            <input type="hidden" formControlName="matricule">
+
               <div class="form-group">
                   <button class="btn btn-primary" type="submit">S'inscrire</button>
                   <a routerLink="" style="float: right;">connexion</a>
