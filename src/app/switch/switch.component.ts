@@ -19,7 +19,6 @@ export class SwitchComponent implements OnInit {
   ) {
 
     this.changeToAdmin();
-    this.changeToUser();
     this.getId = this.activatedRoute.snapshot.paramMap.get('id');
     this.crudService.GetUtilisateur(this.getId).subscribe((res) => {
       this.updateForm.setValue({
