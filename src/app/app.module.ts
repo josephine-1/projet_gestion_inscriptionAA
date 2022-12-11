@@ -18,6 +18,7 @@ import { TableauAdmArchiveComponent } from './tableau-adm-archive/tableau-adm-ar
 import { ModifierComponent } from './modifier/modifier.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SwitchComponent } from './switch/switch.component';
 
 
 
@@ -32,7 +33,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     PageConnexionComponent,
     PageUserComponent,
     TableauAdmComponent,
-    TableauAdmArchiveComponent
+    TableauAdmArchiveComponent,
+    SwitchComponent
   ],
   imports: [
 

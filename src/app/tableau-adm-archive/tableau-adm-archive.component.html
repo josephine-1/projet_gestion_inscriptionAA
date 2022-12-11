@@ -25,12 +25,12 @@
             </thead>
             <tbody>
               <tr *ngFor="let list of Utilisateur | filter:searchText | paginate: { itemsPerPage: 7, currentPage: pages }">
-                <td *ngIf="list.etat==false">{{list.prenom}}</td>
-                <td *ngIf="list.etat==false">{{list.nom}}</td>
-                <td *ngIf="list.etat==false">{{list.email}}</td>
-                <td *ngIf="list.etat==false">{{list.matricule}}</td>
-                <td *ngIf="list.etat==false">{{list.role}}</td>
-                <td *ngIf="list.etat==false"  class="d-flex justify-center">
+                <td >{{list.prenom}}</td>
+                <td >{{list.nom}}</td>
+                <td >{{list.email}}</td>
+                <td >{{list.matricule}}</td>
+                <td >{{list.role}}</td>
+                <td   class="d-flex justify-center">
                   <form   [formGroup]="updateForm" (ngSubmit)="restaurer(list._id)">
                     <input
                     class="form-control"

@@ -15,7 +15,9 @@ export class TableauAdmComponent implements OnInit {
   pages: number = 1;
   searchText:any;
   updateForm!: FormGroup;
+  updateForm_s!: FormGroup;
   success: string = ''
+
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
@@ -25,7 +27,7 @@ export class TableauAdmComponent implements OnInit {
     )
       {
         this.updateForm = this.formBuilder.group({
-          etat: [false]
+          etat: [false],
         });
       }
 
@@ -43,7 +45,7 @@ export class TableauAdmComponent implements OnInit {
   //pour archiver
   delete(id: any) {
 
-    console.log(this.updateForm.value);
+    console.log(this.updateForm.value.etat);
     /* if (window.confirm('Voulez-vous vraiment supprimer ?')) { */
       this.crudService.updateUtilisateur(id, this.updateForm.value).subscribe(
         () => {
@@ -54,5 +56,21 @@ export class TableauAdmComponent implements OnInit {
         }
       );
     }
+    switcher(id:any){
+    this.crudService.GetUtilisateur(id).subscribe((res) => {
+    if (res.role == 'utilisateur') {
+     /*  this.crudService.updateUtilisateur(id, 'administrateur').subscribe(
+        () => {
+           this.getAllUsers();
+           this.ngZone.run(() => this.router.navigateByUrl('active'));
+        }
+      ); */console.log(res.role);
+
+    }
+
+                                                           });
+                    }
   }
+
+
 

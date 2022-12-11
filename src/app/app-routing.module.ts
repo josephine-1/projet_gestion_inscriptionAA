@@ -7,10 +7,12 @@ import { ModifierComponent } from './modifier/modifier.component';
 import { PageConnexionComponent } from './page-connexion/page-connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { PageUserComponent } from './page-user/page-user.component';
+import { SwitchComponent } from './switch/switch.component';
 
 const routes: Routes = [
   { path: '', component: PageConnexionComponent },
   { path: 'active', component: TableauAdmComponent },
+  { path: 'switch/:id', component: SwitchComponent },
   { path: 'modifier/:id', component: ModifierComponent },
   { path: 'user', component: PageUserComponent },
   { path: 'inscription', component: InscriptionComponent },
