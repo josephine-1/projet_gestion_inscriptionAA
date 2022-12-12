@@ -7,8 +7,10 @@ import { ModifierComponent } from './modifier/modifier.component';
 import { PageConnexionComponent } from './page-connexion/page-connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { PageUserComponent } from './page-user/page-user.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
+  /* { path: '', pathMatch: 'full', redirectTo: 'connexion'}, */
   { path: '', component: PageConnexionComponent },
   { path: 'active', component: TableauAdmComponent },
   { path: 'modifier/:id', component: ModifierComponent },
