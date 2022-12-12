@@ -1,32 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 /* Define standard variables and values for website */
-$bgcolor: white;
+/* $bgcolor: white;
 $border:3px solid #0d6efd ;
 $textcolor: black;
 $textcolorr:white;
 $fontsize: 18px;
 $widht:750px;
-$hauteur:500px;
+$hauteur:500px; */
 /* $marg-top:100px; */
-$coloroff:#0d6efd;
-$size-title:30px;
+/* $coloroff:#0d6efd;
+$size-title:30px; */
+$widthl: 600px;
+$margin: 16px auto;
+$font-size: 16px;
+$margin-top: 0;
+$margin-bottom: 0;
+$width: 0;
+$margin-right: auto;
+$margin-left: auto;
+$border: 12px solid transparent;
+$border-bottom-color: rgb(15, 66, 107);
+$background: rgb(12, 77, 129);
+ $padding: 20px;
+  $font-size: 1.4em;
+  $font-weight: normal;
+  $text-align: center;
+  $text-transform: uppercase;
+  $color: #fff;
+  $backgroundC: #ebebeb;
+  $paddingC: 12px;
+
+ $box-sizingi: border-box;
+  $displayi: block;
+  $widthi: 100%;
+  $border-widthi: 1px;
+  $border-stylei: solid;
+  $paddingi: 16px;
+  $outlinei: 0;
+  $font-familyi: inherit;
+  $font-sizei: 0.95em;
+
 
 /* Use the variables */
-.contenue {
+.login{
+  width:$widthl ;
+  margin:$margin ;
+  font-size:$font-size ;
+}
+
+.login-header
+ {
+  margin-top:$margin-top;
+  margin-bottom:$margin-bottom;
+}
+
+.login-header {
+  background: rgb(12, 77, 129);
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+}
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 535px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+.login input[type="email"],
+.login input[type="password"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+.login input[type="submit"] {
+  background: rgb(1, 29, 51);
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.login input[type="submit"]:hover {
+  background: #17c;
+}
+
+
+/* .contenue {
   background-color: $bgcolor;
   color: $textcolor;
   font-size: $fontsize;
   width: $widht;
-  height: $hauteur;
+  height: $hauteur; */
  /*  margin-top: $marg-top; */
-  border: $border;
+ /*  border: $border;
   
-}
+} */
 /* .btn {
 background-color: $coloroff;
 color: $textcolorr;
 
 
 } */
-.title {
+/* .title {
     font-size: $size-title;
-}
+} */
