@@ -12,7 +12,7 @@ import { CrudService } from '../service/service.service';
 export class InscriptionComponent implements OnInit{
   registerForm!: FormGroup;
   submitted = false;
-
+  verifPass: any = true;
   constructor(public formBuilder: FormBuilder,
               private router: Router,
               private ngZone: NgZone,
@@ -27,6 +27,7 @@ this.registerForm = this.formBuilder.group({
   role: [''],
   email: [''],
   password: [''],
+  password2: [''],
   matricule: [''],
   etat: [true],
 
@@ -40,9 +41,26 @@ this.registerForm = this.formBuilder.group({
           prenom: ['', Validators.required],
           role: ['', Validators.required],
           email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-          password: ['', [Validators.required, Validators.minLength(6)]]
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          password2: ['', [Validators.required, Validators.minLength(6)]],
+
+          matricule: [''],
+          etat: [true],
       });
   }
+
+
+  checkPassword =()=>
+  {  let pass1 = (<HTMLInputElement>document.getElementById("pass1")).value;  
+     let pass2 = (<HTMLInputElement>document.getElementById("pass2")).value;  
+         console.log(pass1 != pass2)     
+          if( pass1 != pass2)   
+           {        this.verifPass = false;     
+              console.log(this.verifPass)      
+               this.registerForm = this.formBuilder.group(      
+                   {          password:[''],         
+                            password2:[''],        })    
+                       setTimeout(()=>{ this.verifPass = true}, 3000);             }  }
 
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
