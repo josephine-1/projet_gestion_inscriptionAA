@@ -7,11 +7,8 @@ import { ModifierComponent } from './modifier/modifier.component';
 import { PageConnexionComponent } from './page-connexion/page-connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { PageUserComponent } from './page-user/page-user.component';
-<<<<<<< HEAD
 import { SwitchComponent } from './switch/switch.component';
-=======
 import { AuthGuard } from './auth.guard';
->>>>>>> main
 
 const routes: Routes = [
   /* { path: '', pathMatch: 'full', redirectTo: 'connexion'}, */
