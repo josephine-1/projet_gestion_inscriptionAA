@@ -3,7 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
+const utilisateurRoute = require('./routes/use')
 mongoose
   .connect("mongodb+srv://clustermhd:Espritunis1@cluster0.mdn8s4m.mongodb.net/db")
   .then((x) => {
@@ -63,4 +63,4 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
 });
-
+app.use('/api/auth',utilisateurRoute);
