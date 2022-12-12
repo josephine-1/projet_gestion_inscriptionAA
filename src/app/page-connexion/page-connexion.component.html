@@ -21,7 +21,7 @@
     </label>
     </p>
     <div *ngIf="submitted && angForm.controls['email'].errors" class="help-block"></div>
-    
+
     <div *ngIf="angForm.controls['email'].errors && angForm.controls['email'].errors['required']">
      <p style="color: red;">l'adresse mail est obligatoire </p>
     </div>
@@ -31,16 +31,16 @@
         <input type="text" class="form-control" formControlName="email" id="email" placeholder="name@example.com"  >
       </label>
     </div>-->
-  </div> 
+  </div>
 <!-- pour controle -->
 <!-- <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
   <div *ngIf="angForm.controls['email'].errors && angForm.controls['email'].errors['required']">
   l'adresse mail est obligatoire
 </div> -->
- 
+
 <!-- </div>
  -->
- 
+
   <div class="form-group mb-3 mt-5">
     <p [ngClass]="{ 'has-error': submitted && angForm.controls['password'].errors }">
       <label class="center-block" style="color: #0d6efd; ">Mot de passe:
@@ -49,7 +49,7 @@
     </p>
 
     <div *ngIf="submitted && angForm.controls['password'].errors" class="help-block"></div>
-    
+
     <div *ngIf="angForm.controls['password'].errors && angForm.controls['password'].errors['required']">
      <p style="color: red;">Mot de passe  obligatoire </p>
     </div>
@@ -67,8 +67,8 @@
 
 
 </div> -->
-  
- 
+
+
   <p>
     <input type="submit" value="CONNECTER">
   </p>
@@ -76,7 +76,7 @@
  <!--  <button class="btn btn-primary mt-5">CONNECTER</button><br> -->
 
   <a routerLink="inscription" >S'inscrire</a>
-  
+
    <!-- <button type="submit"
             [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">
            Connecter

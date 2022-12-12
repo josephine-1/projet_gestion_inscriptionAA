@@ -5,6 +5,11 @@
           <div *ngIf="!verifPass" class="d-flex justify-content-center text text-danger" id="">
             <span>Les  mots de passe ne correspondent pas !</span>
         </div>
+
+           <span *ngIf="reussi != ''" class="bg-success p-1 mb-3 text-white">
+            {{ reussi }}
+          </span>
+
           <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
               <div class="form-group">
                   <label>nom</label>
@@ -22,14 +27,14 @@
               </div> <br>
               <div class="form-group">
                 <label>role</label>
-              
+
 
 
                 <select name="roles" id="roles" formControlName="role" class="form-control"[ngClass]="{ 'is-invalid': submitted && f['role'].errors }" class="form-select" id="validation04" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" required>
 
                   <option selected disabled value="">selectionner</option>
-                  <option value="admin" name='roles'>admin</option>
-                  <option value="user" name='roles'>user</option>
+                  <option value="administrateur" name='roles'>admin</option>
+                  <option value="utilisateur" name='roles'>user</option>
                 </select>
 
 
