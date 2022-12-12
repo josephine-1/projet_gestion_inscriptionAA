@@ -1,39 +1,41 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <form   [formGroup]="updateForm" (ngSubmit)="onUpdate()">
-    <div class="form-group">
+  <form   [formGroup]="updateForm"  (ngSubmit)="onUpdate()">
+
       <label>prenom</label>
       <input
+
         class="form-control"
         type="text"
         formControlName="prenom"
         required
       />
-    </div>
-
-    <div class="form-group">
       <label>nom</label>
       <input
+
         class="form-control"
         type="text"
         formControlName="nom"
         required
       />
-    </div>
 
-    <div class="form-group">
+
+
+
       <label>email</label>
       <input
+
         class="form-control"
         type="text"
         formControlName="email"
         required
       />
-    </div>
 
-    <div class="form-group">
+
+    <br>
+
       <button class="btn btn-primary btn-block" type="submit">Modifier</button>
-    </div>
+
   </form>
 
-  </div>
+

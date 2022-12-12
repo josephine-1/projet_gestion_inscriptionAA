@@ -7,4 +7,5 @@ export class Utilisateur {
   role!:String;
   matricule!:String;
   etat!:Boolean;
+  date_d_inscription!:Date;
 }

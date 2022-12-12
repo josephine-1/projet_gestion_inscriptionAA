@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Utilisateur } from './Utilisateur';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import { 
+import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
@@ -29,7 +29,7 @@ export class CrudService {
   }
 
   // Get all objects
-  GetUtilisateurs() {
+  GetUtilisateurs():Observable<any> {
     return this.httpClient.get(`${this.REST_API}`);
   }
   // Get single object

@@ -29,7 +29,7 @@ utilisateurRoute.route("/").get((req, res) => {
 
 // Get Utilisateur
 utilisateurRoute.route("/read-utilisateur/:id").get((req, res) => {
- 
+
   Utilisateur.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error);
