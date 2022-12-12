@@ -19,11 +19,14 @@ let Utilisateur = new Schema(
       type: String,
     },
     matricule: {
-      type: String,
+      type: String /* = (new Date()).getTime(), */
     },
     etat: {
       type: Boolean,
     },
+     date_d_inscription:{
+      type: Date //la date d'inscription
+    }
   },
   {
     collection: "utilisateur",

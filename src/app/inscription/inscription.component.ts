@@ -12,7 +12,8 @@ import { CrudService } from '../service/service.service';
 export class InscriptionComponent implements OnInit{
   registerForm!: FormGroup;
   submitted = false;
-
+  reussi: string ='';
+  date: Date = new Date()
   constructor(public formBuilder: FormBuilder,
               private router: Router,
               private ngZone: NgZone,
@@ -29,11 +30,11 @@ this.registerForm = this.formBuilder.group({
   password: [''],
   matricule: [''],
   etat: [true],
-
+  date_d_inscription: ['']
 
 });
       }
-   
+
 
   ngOnInit() {
       this.registerForm = this.formBuilder.group({
@@ -42,7 +43,8 @@ this.registerForm = this.formBuilder.group({
           role: ['', Validators.required],
           email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
           password: ['', [Validators.required, Validators.minLength(6)]],
-          matricule: [''],
+          matricule: [(new Date()).getTime()], //(new Date()).getTime(); générer matricule automatique
+          date_d_inscription:[Date()],
           etat: [true],
       });
   }
@@ -60,8 +62,10 @@ this.registerForm = this.formBuilder.group({
         (res) => {
           console.log('Data added successfully!');
           console.log(res);
-
-          // this.ngZone.run(() => this.router.navigateByUrl('/'));
+           this.ngZone.run(() => this.router.navigateByUrl('/inscription'));
+           this.reussi = 'inscription reussi';
+           this.registerForm.reset();
+           this.submitted = false;
         },
        /*  (err) => {
           console.log(err);
