@@ -16,7 +16,7 @@ let Utilisateur = new Schema(
       type: String, require: true, unique: true
     },
     password: {
-      type: String,
+      type: String, require: true
     },
     role: {
       type: String,

@@ -1,17 +1,18 @@
 const bcrypt = require('bcrypt');
 const Utilisateur = require('../model/Utilisateur');
 const jwt = require('jsonwebtoken')
+// const bcrypt = require("bcryptjs");
 
 const utilisateur = require('../model/Utilisateur');
 
 
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
-  .then(hash =>{ 
+  .then((hash) =>{ 
     const utilisateur = new utilisateur({
 
         email: req.body.email,
-        password: hash
+        password: hash,
     });
     utilisateur.save()
     .then(() => res.status(201).json({message: 'Utilisateur cree !'}))
