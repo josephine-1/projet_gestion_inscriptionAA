@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 
-
 const utilisateurRoute = express.Router();
 let Utilisateur = require("../model/Utilisateur");
 
@@ -59,16 +58,6 @@ utilisateurRoute.route("/modifier/:id").put((req, res, next) => {
   );
 });
 
-// Delete Utilisateur
-utilisateurRoute.route("/delete-utilisateur/:id").delete((req, res, next) => {
-  Utilisateur.findByIdAndRemove(req.params.id, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.status(200).json({
-        msg: data,
-      });
-    }
-  });
-});
+
+
 module.exports = utilisateurRoute;

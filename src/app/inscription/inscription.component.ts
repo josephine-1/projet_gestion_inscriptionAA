@@ -3,6 +3,7 @@ import { Component , OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from '../service/service.service';
+import * as bcrypt from 'bcryptjs';
 
 
 @Component({
@@ -77,7 +78,25 @@ this.registerForm = this.formBuilder.group({
           this.reussi = '';
           return;
       }
-      this.crudService.AddUtilisateur(this.registerForm.value).subscribe(
+let date = (new Date()).getTime();
+let matricule = date.toString();
+const salt = bcrypt.genSaltSync(10);
+const user={
+
+  prenom: this.registerForm.value.prenom,
+  nom:this.registerForm.value.nom,
+  email: this.registerForm.value.email,
+  password:bcrypt.hashSync(this.registerForm.value.password, salt),
+  role:this.registerForm.value.role,
+  matricule:matricule,
+  etat:true,
+  date_d_inscription:new Date()
+}
+console.log(user)
+
+
+
+      this.crudService.AddUtilisateur(user).subscribe(
         (res) => {
           console.log('Data added successfully!');
           console.log(res);
