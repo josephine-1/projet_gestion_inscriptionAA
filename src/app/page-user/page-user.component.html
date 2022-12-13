@@ -14,7 +14,7 @@
       <form class="lesLiens">
      <!--    <a routerLink="/active" id="active" >active</a>
         <a routerLink="archive" id="archive"  >archive</a> -->
-        <a href="" (click)="deconnexion">
+        <a href="" (click)="deconnexion()">
             <svg width="30" height="35" viewBox="0 0 38 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.25 39.625H5.58333C4.56667 39.625 3.59165 39.1772 2.87276 38.3802C2.15387 37.5832 1.75 36.5022 1.75 35.375V5.625C1.75 4.49783 2.15387 3.41683 2.87276 2.6198C3.59165 1.82277 4.56667 1.375 5.58333 1.375H13.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M26.666 31.125L36.2493 20.5L26.666 9.875" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -27,7 +27,7 @@
   </div>
 </nav>
 <!-- navbarre en haut -->
-<div class="container mt-5 ">
+<div *ngIf="etat != undefined" class="container mt-5 ">
   <h2 class="text-center text-primary">Listes des utilisateurs</h2>
 
   <div class="row ">
