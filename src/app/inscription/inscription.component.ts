@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CrudService } from '../service/service.service';
 import * as bcrypt from 'bcryptjs';
 
+
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
@@ -50,20 +51,21 @@ this.registerForm = this.formBuilder.group({
           matricule: [(new Date()).getTime()], //(new Date()).getTime(); générer matricule automatique
           date_d_inscription:[Date()],
           etat: [true],
+
       });
   }
 
 
   checkPassword =()=>
-  {  let pass1 = (<HTMLInputElement>document.getElementById("pass1")).value;  
-     let pass2 = (<HTMLInputElement>document.getElementById("pass2")).value;  
-         console.log(pass1 != pass2)     
-          if( pass1 != pass2)   
-           {        this.verifPass = false;     
-              console.log(this.verifPass)      
-               this.registerForm = this.formBuilder.group(      
-                   {          password:[''],         
-                            password2:[''],        })    
+  {  let pass1 = (<HTMLInputElement>document.getElementById("pass1")).value;
+     let pass2 = (<HTMLInputElement>document.getElementById("pass2")).value;
+         console.log(pass1 != pass2)
+          if( pass1 != pass2)
+           {        this.verifPass = false;
+              console.log(this.verifPass)
+               this.registerForm = this.formBuilder.group(
+                   {          password:[''],
+                            password2:[''],        })
                        setTimeout(()=>{ this.verifPass = true}, 3000);             }  }
 
   // convenience getter for easy access to form fields
@@ -73,9 +75,11 @@ this.registerForm = this.formBuilder.group({
       this.submitted = true;
         // stop here if form is invalid
         if (this.registerForm.invalid) {
+          this.reussi = '';
           return;
       }
-
+let date = (new Date()).getTime();
+let matricule = date.toString();
 const salt = bcrypt.genSaltSync(10);
 const user={
 
@@ -84,9 +88,9 @@ const user={
   email: this.registerForm.value.email,
   password:bcrypt.hashSync(this.registerForm.value.password, salt),
   role:this.registerForm.value.role,
-  // matricule!:this.registerForm.value.;
-   etat:true,
-  //  date_d_inscription:Date
+  matricule:matricule,
+  etat:true,
+  date_d_inscription:new Date()
 }
 console.log(user)
 
@@ -100,13 +104,9 @@ console.log(user)
            this.reussi = 'inscription reussi';
            this.registerForm.reset();
            this.submitted = false;
-        },
-       /*  (err) => {
-          console.log(err);
-        } */
-      );
+        });
 
-
+        setInterval(() => { this.reussi = ''}, 3000);
       /* alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))*/
    }
 }

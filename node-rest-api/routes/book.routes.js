@@ -29,7 +29,7 @@ utilisateurRoute.route("/").get((req, res) => {
 
 // Get Utilisateur
 utilisateurRoute.route("/read-utilisateur/:id").get((req, res) => {
- 
+
   Utilisateur.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error);
@@ -58,16 +58,6 @@ utilisateurRoute.route("/modifier/:id").put((req, res, next) => {
   );
 });
 
-// Delete Utilisateur
-utilisateurRoute.route("/delete-utilisateur/:id").delete((req, res, next) => {
-  Utilisateur.findByIdAndRemove(req.params.id, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.status(200).json({
-        msg: data,
-      });
-    }
-  });
-});
+
+
 module.exports = utilisateurRoute;
