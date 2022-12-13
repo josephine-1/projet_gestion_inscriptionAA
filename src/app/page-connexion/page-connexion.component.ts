@@ -41,11 +41,28 @@ constructor(private authService: AuthService,
     if(this.angForm.invalid){
       return; */
       this.crudService.login(this.angForm.value).subscribe(
-        (message) => {
-          console.log(message);
-          this.retour = message.message;
+        (data) => {
+          if (data.permis == false) {
+            this.retour = data.message;
+          }
+          else{
+            this.retour = 'cool';
+            localStorage.setItem('token', data.token.toString());
+            localStorage.setItem('id', data.UtilisateurId.toString());
+            localStorage.setItem('prenom', data.prenom.toString());
+            localStorage.setItem('nom', data.nom.toString());
+            localStorage.setItem('matricule', data.matricule.toString());
+            console.log(localStorage.getItem('prenom'))
+            if (data.role == 'administrateur') {
+              this.router.navigate(['/active'])
+            }
+            else{
+              this.router.navigate(['/user'])
+            }
 
+          }
 
+      /*     localStorage.setItem('token', this.retour.toString()); */
         });
 
   }

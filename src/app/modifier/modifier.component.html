@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div *ngIf="etat != undefined"  class="container">
   <form   [formGroup]="updateForm"  (ngSubmit)="onUpdate()">
 
       <label>prenom</label>

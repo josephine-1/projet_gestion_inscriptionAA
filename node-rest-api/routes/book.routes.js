@@ -75,10 +75,15 @@ utilisateurRoute.route("/connexion").post((req, res) => {
         bcrypt.compare(req.body.password, Utilisateur.password)
               .then(valid => {
                   if (!valid) {
-                      return res.status(200).json({ message: 'Mail ou mot de passe incorrect' });
+                      return res.status(200).json({ message: 'Mail ou mot de passe incorrect', permis: false });
                   }
                   res.status(200).json({
                       UtilisateurId: Utilisateur._id,
+                      prenom:Utilisateur.prenom,
+                      nom:Utilisateur.nom,
+                      matricule:Utilisateur.matricule,
+                      permis:true,
+                      role:Utilisateur.role,
                       token: jwt.sign(
                           { UtilisateurId: Utilisateur._id},
                           'RANDOM_TOKEN_SECRET',
