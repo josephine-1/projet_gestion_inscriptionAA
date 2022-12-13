@@ -2,6 +2,7 @@
   <div class="row">
       <div class="col-md-6 offset-md-3">
           <h3 class="text-primary" style="margin-left: 25%;">FORMULAIRE D'INSCRIPTION</h3>
+          
           <div *ngIf="!verifPass" class="d-flex justify-content-center text text-danger" id="">
             <span>Les  mots de passe ne correspondent pas !</span>
         </div>
@@ -62,13 +63,13 @@
               <div class="form-group">
                 <label>confirm Password</label>
                 <input type="password" formControlName="password2" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password2'].errors }"  #pass2 (change)="checkPassword()" id="pass2" />
-                
+
                 <div *ngIf="submitted && f['password2'].errors" class="invalid-feedback">
                     <div *ngIf="f['password2']['errors']['required']">Password is required</div>
                     <div *ngIf="f['password2']['errors']['minlength']">Password must be at least 6 characters</div>
                 </div>
             </div> <br>
-           
+
             <input type="hidden" formControlName="etat">
             <input type="hidden" formControlName="matricule">
               <div class="form-group">
