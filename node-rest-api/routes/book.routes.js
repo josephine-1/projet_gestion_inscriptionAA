@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
+const bcrypt = require('bcrypt');
+const Utilisateur = require('../model/Utilisateur');
+const jwt = require('jsonwebtoken')
 
 const utilisateurRoute = express.Router();
-let Utilisateur = require("../model/Utilisateur");
+
 
 // Add Utilisateur
 utilisateurRoute.route("/add-utilisateur").post((req, res, next) => {
@@ -58,6 +61,33 @@ utilisateurRoute.route("/modifier/:id").put((req, res, next) => {
   );
 });
 
+utilisateurRoute.route("/connexion").post((req, res) => {
+  Utilisateur.findOne({ email: req.body.email})
+      .then(Utilisateur => {
+          if (!Utilisateur) {
+              return res.status(200).json({ message: 'Mail ou mot de passe incorrect'});
 
+          }
+        /*   else{
+            return res.status(200).json({ message: 'reussi'});
+          } */
+
+        bcrypt.compare(req.body.password, Utilisateur.password)
+              .then(valid => {
+                  if (!valid) {
+                      return res.status(200).json({ message: 'Mail ou mot de passe incorrect' });
+                  }
+                  res.status(200).json({
+                      UtilisateurId: Utilisateur._id,
+                      token: jwt.sign(
+                          { UtilisateurId: Utilisateur._id},
+                          'RANDOM_TOKEN_SECRET',
+                      )
+                  });
+              })
+              .catch(error => res.status(500).json({ error }));
+      })
+      .catch(error => res.status(500).json({ error }));
+});
 
 module.exports = utilisateurRoute;
