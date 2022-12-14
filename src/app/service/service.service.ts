@@ -59,6 +59,13 @@ export class CrudService {
       .pipe(catchError(this.handleError));
   }
 
+    //CONNEXION
+    login(data: Utilisateur): Observable<any> {
+      let API_URL = `${this.REST_API}/connexion`;
+      return this.httpClient
+        .post(API_URL, data)
+        .pipe(catchError(this.handleError));
+    }
   // Error
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
@@ -74,4 +81,7 @@ export class CrudService {
       errorMessage;
     });
   }
+
+
+
 }

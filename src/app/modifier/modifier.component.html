@@ -1,10 +1,9 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <form   [formGroup]="updateForm"  (ngSubmit)="onUpdate()">
+<div *ngIf="etat != undefined"  class="container">
+  <form class="modifier"  [formGroup]="updateForm"  (ngSubmit)="onUpdate()">
 
       <label>prenom</label>
       <input
-
         class="form-control"
         type="text"
         formControlName="prenom"
@@ -18,10 +17,6 @@
         formControlName="nom"
         required
       />
-
-
-
-
       <label>email</label>
       <input
 

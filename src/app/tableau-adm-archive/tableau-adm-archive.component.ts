@@ -14,6 +14,7 @@ export class TableauAdmArchiveComponent implements OnInit {
   pages: number = 1;
   searchText:any;
   updateForm!: FormGroup;
+  etat:any = localStorage.getItem('token');
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
@@ -29,7 +30,7 @@ export class TableauAdmArchiveComponent implements OnInit {
   ngOnInit(): void {
     this.crudService.GetUtilisateurs().subscribe((res) => {
       console.log(res);
-      res = res.filter((user:any) => user.etat == false);
+      res = res.filter((user:any) => user.etat == false && user._id != localStorage.getItem('id'));
       this.Utilisateur = res;
     });
   }

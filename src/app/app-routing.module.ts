@@ -8,16 +8,17 @@ import { PageConnexionComponent } from './page-connexion/page-connexion.componen
 import { InscriptionComponent } from './inscription/inscription.component';
 import { PageUserComponent } from './page-user/page-user.component';
 import { SwitchComponent } from './switch/switch.component';
-import { AuthGuard } from './auth.guard';
+
+
 
 const routes: Routes = [
   /* { path: '', pathMatch: 'full', redirectTo: 'connexion'}, */
   { path: '', component: PageConnexionComponent },
   { path: 'active', component: TableauAdmComponent },
   { path: 'switch/:id', component: SwitchComponent },
-  { path: 'modifier/:id', component: ModifierComponent },
-  { path: 'user', component: PageUserComponent },
-  { path: 'inscription', component: InscriptionComponent },
+  { path: 'modifier/:id', component: ModifierComponent},
+  { path: 'user', component: PageUserComponent  },
+  { path: 'inscription', component: InscriptionComponent},
   { path: 'archive', component: TableauAdmArchiveComponent },
 
 ];

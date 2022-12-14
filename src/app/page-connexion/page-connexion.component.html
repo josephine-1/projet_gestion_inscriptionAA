@@ -11,10 +11,12 @@
   <!-- Page de connexion -->
   <div class="login  mt-5">
     <h2 class="login-header">S'identifier</h2>
+
   <form [formGroup]="angForm"  class="login-container"  (ngSubmit)="seConnecter()">
   <div class="form-group container contenue">
+    <span *ngIf="retour != ''" class="bg-white p-1 mb-3 text-danger">{{retour}} </span>
 <!--    <form [formGroup]="connecterForm" [ngSubmit]!="onSubmit()" > -->
-  <div class="form-group mb-3 mt-5">
+  <div class="form-group mb-3 mt-5 text-danger">
     <p [ngClass]="{ 'has-error': submitted && angForm.controls['email'].errors }">
       <label class="center-block" style="color: #0d6efd; ">Adresse mail:
       <input type="email" placeholder="Email" formControlName="email">
@@ -23,7 +25,7 @@
     <div *ngIf="submitted && angForm.controls['email'].errors" class="help-block"></div>
 
     <div *ngIf="angForm.controls['email'].errors && angForm.controls['email'].errors['required']">
-     <p style="color: red;">l'adresse mail est obligatoire </p>
+     <p  style="color: red;">l'adresse mail est obligatoire </p>
     </div>
     <div *ngIf="angForm.controls['email'].errors && angForm.controls['email'].errors['email']"><p style="color: red;">le format de l'email est invalide</p></div>
     <!-- <div class="form-group">
@@ -51,7 +53,7 @@
     <div *ngIf="submitted && angForm.controls['password'].errors" class="help-block"></div>
 
     <div *ngIf="angForm.controls['password'].errors && angForm.controls['password'].errors['required']">
-     <p style="color: red;">Mot de passe  obligatoire </p>
+     <p  style="color: red;">Mot de passe  obligatoire </p>
     </div>
 
    <!--  <label class="center-block" style="color: #0d6efd; ">Mot de passe:
