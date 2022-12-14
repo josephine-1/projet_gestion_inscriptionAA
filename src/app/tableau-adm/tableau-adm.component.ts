@@ -39,7 +39,7 @@ export class TableauAdmComponent implements OnInit {
   getAllUsers() {
     this.crudService.GetUtilisateurs().subscribe((res) => {
       console.log(res);
-      res = res.filter((user:any) => user.etat == true); // filtrer les actives et les archives
+      res = res.filter((user:any) => user.etat == true && user._id != localStorage.getItem('id')); // filtrer les actives et les archives
       this.Utilisateur = res;
     });
   }
