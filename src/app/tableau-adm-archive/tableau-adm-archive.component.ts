@@ -30,7 +30,7 @@ export class TableauAdmArchiveComponent implements OnInit {
   ngOnInit(): void {
     this.crudService.GetUtilisateurs().subscribe((res) => {
       console.log(res);
-      res = res.filter((user:any) => user.etat == false);
+      res = res.filter((user:any) => user.etat == false && user._id != localStorage.getItem('id'));
       this.Utilisateur = res;
     });
   }

@@ -77,6 +77,9 @@ utilisateurRoute.route("/connexion").post((req, res) => {
                   if (!valid) {
                       return res.status(200).json({ message: 'Le mot de passe est incorrect', permis: false });
                   }
+                  if(Utilisateur.etat == false){
+                    return res.status(200).json({ message: "Ce compte n'existe plus", permis: false });
+                  }
                   res.status(200).json({
                       UtilisateurId: Utilisateur._id,
                       prenom:Utilisateur.prenom,
