@@ -65,7 +65,7 @@ utilisateurRoute.route("/connexion").post((req, res) => {
   Utilisateur.findOne({ email: req.body.email})
       .then(Utilisateur => {
           if (!Utilisateur) {
-              return res.status(200).json({ message: "Ce compte n'existe pas"});
+              return res.status(200).json({ message: "Ce compte n'existe pas", permis: false});
 
           }
         /*   else{
