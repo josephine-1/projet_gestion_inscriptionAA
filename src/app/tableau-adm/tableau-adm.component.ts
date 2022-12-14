@@ -22,6 +22,7 @@ export class TableauAdmComponent implements OnInit {
   updateForm!: FormGroup;
   updateForm_s!: FormGroup;
   success: string = ''
+  etat:any = localStorage.getItem('token');
 
   constructor(
     public formBuilder: FormBuilder,
@@ -40,6 +41,8 @@ export class TableauAdmComponent implements OnInit {
     this.getAllUsers();
      // Call the method
    /*   this.confirmBox(); */
+
+
   }
   // Créer un pop-pup
               confirmBox(x:any) {
@@ -78,7 +81,7 @@ export class TableauAdmComponent implements OnInit {
   }
   //pour archiver
   delete(id: any) {
-   /*  if(confirm("Voulez-vous vraiment supprimer ?")) { */
+    if(confirm("Voulez-vous vraiment supprimer ?")) {
     console.log(this.updateForm.value.etat);
     /* if (window.confirm('Voulez-vous vraiment supprimer ?')) { */
       this.crudService.updateUtilisateur(id, this.updateForm.value).subscribe(
@@ -90,7 +93,7 @@ export class TableauAdmComponent implements OnInit {
            this.ngZone.run(() => this.router.navigateByUrl('active'));
         }
       );/* } */
-    }
+    }}
 
     switcher(id:any){
     this.crudService.GetUtilisateur(id).subscribe((res) => {

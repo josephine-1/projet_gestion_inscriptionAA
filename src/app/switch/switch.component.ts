@@ -10,6 +10,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class SwitchComponent implements OnInit {
   getId: any;
   updateForm!: FormGroup;
+  etat:any = localStorage.getItem('token');
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,

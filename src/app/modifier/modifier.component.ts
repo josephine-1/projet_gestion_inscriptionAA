@@ -12,6 +12,9 @@ export class ModifierComponent implements OnInit {
   getId: any;
   updateForm!: FormGroup;
   submitted = false;
+
+  etat:any = localStorage.getItem('token');
+
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,

@@ -14,6 +14,7 @@ export class TableauAdmArchiveComponent implements OnInit {
   pages: number = 1;
   searchText:any;
   updateForm!: FormGroup;
+  etat:any = localStorage.getItem('token');
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
