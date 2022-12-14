@@ -16,6 +16,9 @@ export class InscriptionComponent implements OnInit{
   submitted = false;
   verifPass: any = true;
   reussi: string ='';
+  Utilisateur:any;
+  mail!:String;
+  mailExiste:String = '';
   date: Date = new Date()
   constructor(public formBuilder: FormBuilder,
               private router: Router,
@@ -92,23 +95,43 @@ const user={
   etat:true,
   date_d_inscription:new Date()
 }
-console.log(user)
+/* console.log(user) */
+
+
+this.crudService.GetUtilisateurs().subscribe((res) => {
+  this.mail = this.registerForm.value.email;
+  res = res.filter((user:any) => user.email == this.mail); // filtrer les actives et les archives
+  this.Utilisateur = res;
+  console.log(this.Utilisateur.length);
+  if ((this.Utilisateur.length) == 0) {
+
+    this.crudService.AddUtilisateur(user).subscribe(
+      (res) => {
+        console.log('Data added successfully!');
+        console.log(res);
+         this.ngZone.run(() => this.router.navigateByUrl('/inscription'));
+         this.reussi = 'inscription reussi';
+         this.registerForm.reset();
+         this.submitted = false;
+         setInterval(() => { this.reussi = ''}, 3000);
+      });
+  }
+  else{
+    this.mailExiste = "L'adresse mail existe déja";
+    setInterval(() => { this.mailExiste = ''}, 3000);
+  }
+})
 
 
 
-      this.crudService.AddUtilisateur(user).subscribe(
-        (res) => {
-          console.log('Data added successfully!');
-          console.log(res);
-           this.ngZone.run(() => this.router.navigateByUrl('/inscription'));
-           this.reussi = 'inscription reussi';
-           this.registerForm.reset();
-           this.submitted = false;
-        });
 
-        setInterval(() => { this.reussi = ''}, 3000);
+
+
+
       /* alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))*/
-   }
+
+
+  }
 }
 
 
