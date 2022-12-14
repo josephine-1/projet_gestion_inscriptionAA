@@ -2,13 +2,17 @@
   <div class="row">
       <div class="col-md-6 offset-md-3">
           <h3 class="text-primary" style="margin-left: 25%;">FORMULAIRE D'INSCRIPTION</h3>
-          
+
           <div *ngIf="!verifPass" class="d-flex justify-content-center text text-danger" id="">
             <span>Les  mots de passe ne correspondent pas !</span>
         </div>
 
            <span *ngIf="reussi != ''" class="bg-success p-1 mb-3 text-white">
             {{ reussi }}
+          </span>
+
+          <span *ngIf="mailExiste != ''" class="bg-danger p-1 mb-3 text-white">
+            {{ mailExiste }}
           </span>
 
           <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
