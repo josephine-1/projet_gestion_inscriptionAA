@@ -8,7 +8,7 @@ import { PageConnexionComponent } from './page-connexion/page-connexion.componen
 import { InscriptionComponent } from './inscription/inscription.component';
 import { PageUserComponent } from './page-user/page-user.component';
 import { SwitchComponent } from './switch/switch.component';
-import { AuthGuard } from './auth.guard';
+
 
 
 const routes: Routes = [
