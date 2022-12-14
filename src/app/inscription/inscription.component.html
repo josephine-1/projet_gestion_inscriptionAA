@@ -69,6 +69,13 @@
                 </div>
             </div> <br>
            
+
+            <div class="mb-3 col-md-3">
+              <label for="photo" class="form-label">photo</label>
+              <input type="file" name="photo" id="validation07" class="form-control" placeholder="photo" (change)="selectFile($event)">
+            </div>
+
+
             <input type="hidden" formControlName="etat">
             <input type="hidden" formControlName="matricule">
               <div class="form-group">

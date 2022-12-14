@@ -29,7 +29,12 @@ let Utilisateur = new Schema(
     },
      date_d_inscription:{
       type: Date //la date d'inscription
-    }
+    },
+      photo:{
+        type:String
+        
+      }
+    
   },
   {
     collection: "utilisateur",

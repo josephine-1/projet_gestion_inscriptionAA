@@ -11,11 +11,16 @@ import * as bcrypt from 'bcryptjs';
   styleUrls: ['./inscription.component.scss']
 })
 export class InscriptionComponent implements OnInit{
+
+  
+   
+
   registerForm!: FormGroup;
   submitted = false;
   verifPass: any = true;
   reussi: string ='';
   date: Date = new Date()
+  photoSelected:any;
   constructor(public formBuilder: FormBuilder,
               private router: Router,
               private ngZone: NgZone,
@@ -33,7 +38,9 @@ this.registerForm = this.formBuilder.group({
   password2: [''],
   matricule: [''],
   etat: [true],
-  date_d_inscription: ['']
+  date_d_inscription: [''],
+  photo: ['']
+
 
 });
       }
@@ -50,6 +57,7 @@ this.registerForm = this.formBuilder.group({
           matricule: [(new Date()).getTime()], //(new Date()).getTime(); générer matricule automatique
           date_d_inscription:[Date()],
           etat: [true],
+          photo: ['']
       });
   }
 
@@ -69,6 +77,23 @@ this.registerForm = this.formBuilder.group({
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
+
+  selectFile(event:any){
+
+    if(event.target.file){
+
+      var reader = new FileReader()
+      reader.readAsDataURL(event.target.file[0])
+      reader.onload = (event:any)=>{
+
+        this.photoSelected = reader.result; 
+        console.log(this.photoSelected);
+      }
+    };
+    
+   } 
+
+
   onSubmit(): any {
       this.submitted = true;
         // stop here if form is invalid
@@ -87,8 +112,29 @@ const user={
   // matricule!:this.registerForm.value.;
    etat:true,
   //  date_d_inscription:Date
+  photo:this.photoSelected
 }
 console.log(user)
+
+/* 
+onFileSelected(event: any) {
+
+
+  let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.photoSelected = reader.result; 
+        console.log(this.photoSelected);
+      };
+    }
+
+}
+
+ selectFile(event: any) { 
+
+}  */
 
 
 

@@ -8,4 +8,5 @@ export class Utilisateur {
   matricule?:String;
   etat?:Boolean;
   date_d_inscription?:Date;
+  photo?:String;
 }
