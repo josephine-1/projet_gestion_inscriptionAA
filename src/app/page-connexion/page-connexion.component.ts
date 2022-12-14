@@ -46,7 +46,6 @@ constructor(private authService: AuthService,
             this.retour = data.message;
           }
           else{
-            this.retour = 'cool';
             localStorage.setItem('token', data.token.toString());
             localStorage.setItem('id', data.UtilisateurId.toString());
             localStorage.setItem('prenom', data.prenom.toString());
