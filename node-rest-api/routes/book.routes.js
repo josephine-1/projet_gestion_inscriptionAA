@@ -65,7 +65,7 @@ utilisateurRoute.route("/connexion").post((req, res) => {
   Utilisateur.findOne({ email: req.body.email})
       .then(Utilisateur => {
           if (!Utilisateur) {
-              return res.status(200).json({ message: 'Mail ou mot de passe incorrect'});
+              return res.status(200).json({ message: "Ce compte n'existe pas"});
 
           }
         /*   else{
@@ -75,7 +75,7 @@ utilisateurRoute.route("/connexion").post((req, res) => {
         bcrypt.compare(req.body.password, Utilisateur.password)
               .then(valid => {
                   if (!valid) {
-                      return res.status(200).json({ message: 'Mail ou mot de passe incorrect', permis: false });
+                      return res.status(200).json({ message: 'Le mot de passe est incorrect', permis: false });
                   }
                   res.status(200).json({
                       UtilisateurId: Utilisateur._id,
