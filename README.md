@@ -1,27 +1,70 @@
-# ProjetGesInsAA
+        #Architecture du projet
+Ce projet comporte deux parties
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+La partie Front End
+Cette partie représente la partie graphique de l'application, celle que l'utilisateur voit dans son navigateur
+ 
+La partie Back End
+Cette partie permet de gèrer les données.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#Front End
+Cette partie fait appel aux éléments suivants
+Le Framework Javascript Angular
+Le Framework CSS Bootstrap
 
-## Code scaffolding
+#Back End
+Cette partie permet de traiter les données.
+La base de données utilisée est MongoDb.
+Et le serveur node js et express
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+#Le code source de l'application git est:
+https://github.com/josephine-1/projet_gestion_inscriptionAA.git
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+            #Exécution du Front End
+Nous allons utiliser un éditeur de code.
+Notre choix se porte sur Visual Studio code.
 
-## Running unit tests
+Il faut ouvrir le projet.
+Puis nous éxécuterons les étapes suivantes
+#Installation des dépendances
+        npm install
+#Exécution du programme
+        ng serve 
+        http://localhost:4200/   
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+        #Fonctionnement du Front End
+ Cette application fonctionne en utilisant le principe des API
+Ce projet propose 4 API
+#Add Utilisateur
+#Get All Utilisateur 
+#Update Utilisateur
+#Authentification 
 
-## Running end-to-end tests
+            #Exécution du Backend
+Nous allons faire fonctionner l'API 
+L'API se situe dans le répertoire node-rest-api du projet.
+#Les étapes à suivre sont les suivantes:
+#Installer les dépendances
+npm run install
+ #Création de la base de données avec MongoDb
+    Nom base de donnée: db
+    Collection : utilisateur
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ #Exécution avec la commande
+node server ou nodemon server(pour avoir les mises en jours en temps réel)
 
-## Further help
+        #Fonctionnement du Back End
+Les api disposent des scripts permettant de:
+    #Créer des Utilisateur(Inscription)
+    #recupérer un ou plusieurs utilisateur(Affichage)
+    #Modifier les utilisateur,changer role utilisateur,archivés et désharchivé un utilisateur.
+    #Authentification(pour la connexion des utilisateur)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Il faut évidemment avoir installer MongoDb atlas
+et pour la connexion avec la base de donnée:
+
+#connect("mongodb+srv://clustermhd:Espritunis1@cluster0.mdn8s4m.mongodb.net/db")
+
+    
