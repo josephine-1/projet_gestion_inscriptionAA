@@ -38,7 +38,6 @@ import { SwitchComponent } from './switch/switch.component';
     SwitchComponent
   ],
   imports: [
-
     Ng2SearchPipeModule,
     AppRoutingModule,
     BrowserModule,

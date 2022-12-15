@@ -28,7 +28,7 @@
 </nav>
 <!-- navbarre en haut -->
 <div *ngIf="etat != undefined" class="container mt-5 ">
-  <h2 class="text-center text-primary">Listes des utilisateurs</h2>
+  <h2 class="text-center text-primary">Listes des users</h2>
 
   <div class="row ">
    <div class="search-hero rec">
@@ -48,12 +48,12 @@
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of Users | paginate:{itemsPerPage: 5, currentPage:p} | filter:searchText" class="text-center">
+        <tr *ngFor="let user of Utilisateur | paginate:{itemsPerPage: 5, currentPage:p} | filter:searchText" class="text-center">
 
           <td>{{ user.nom }}</td>
           <td>{{ user.prenom }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.telephone }}</td>
+          <td>{{ user.matricule }}</td>
           <td>{{ user.date_d_inscription}}</td>
         </tr>
       </tbody>
