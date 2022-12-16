@@ -12,6 +12,11 @@ export class ModifierComponent implements OnInit {
   getId: any;
   updateForm!: FormGroup;
   submitted = false;
+  renvoi:string = '';
+  email:any;
+  Utilisateur:any;
+  mail_C: any;
+  ok:boolean;
 
   etat:any = localStorage.getItem('token');
 
@@ -45,7 +50,7 @@ export class ModifierComponent implements OnInit {
 
 
   }
-/*   verif(){
+/*    verif(){
     this.updateForm = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -55,17 +60,31 @@ export class ModifierComponent implements OnInit {
   } */
 
 
-/*   get f() { return this.updateForm.controls; } */
+  get f() { return this.updateForm.controls; }
+  bouger(){ this.ok = true }
 
     onUpdate(): any {
+      if ((this.updateForm.value.prenom == '')|| ( this.updateForm.value.nom == ''  || ( this.updateForm.value.email == '' ))) {
+        this.renvoi = 'Veuillez renseigner tout les champs'
+        return false;
+      }
 
-   /*  this.verif(); */
-/*
-    this.submitted = true; */
+      this.crudService.GetUtilisateurs().subscribe((res) => {
+        this.email = this.updateForm.value.email;
+        res = res.filter((user:any) => user.email == this.email);
+        this.Utilisateur = res;
+      });
+      if ((this.Utilisateur.length != 0) && (this.ok == true)) {
+        this.renvoi = "l'adresse mail existe déja";
+        return false;
+      }
+
+
+    this.submitted = true;
     // stop here if form is invalid
-/*     if (this.updateForm.invalid) {
+    if (this.updateForm.invalid) {
       return;
-  } */
+  }
     this.crudService.updateUtilisateur(this.getId, this.updateForm.value).subscribe(
       () => {
         console.log('Data updated successfully!');

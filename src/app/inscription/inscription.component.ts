@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from '../service/service.service';
 import * as bcrypt from 'bcryptjs';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -19,6 +20,10 @@ export class InscriptionComponent implements OnInit{
   Utilisateur:any;
   mail!:String;
   mailExiste:String = '';
+  preview!: string;
+  select_tof:boolean = false;
+  percentDone?: any = 0;
+  users: any[] = [];
   date: Date = new Date()
   constructor(public formBuilder: FormBuilder,
               private router: Router,
@@ -37,7 +42,8 @@ this.registerForm = this.formBuilder.group({
   password2: [''],
   matricule: [''],
   etat: [true],
-  date_d_inscription: ['']
+  date_d_inscription: [''],
+  avatar: ['avatar.jpg'],
 
 });
       }
@@ -54,10 +60,26 @@ this.registerForm = this.formBuilder.group({
           matricule: [(new Date()).getTime()], //(new Date()).getTime(); générer matricule automatique
           date_d_inscription:[Date()],
           etat: [true],
+          avatar: ['avatar.jpg'],
 
       });
   }
 
+  uploadFile(event) {
+    this.select_tof = true;
+    const file = (event.target as HTMLInputElement).files[0];
+    this.registerForm.patchValue({
+      avatar: file,
+    });
+    this.registerForm.get('avatar').updateValueAndValidity();
+
+    // File Preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.preview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
 
   checkPassword =()=>
   {  let pass1 = (<HTMLInputElement>document.getElementById("pass1")).value;
@@ -74,7 +96,7 @@ this.registerForm = this.formBuilder.group({
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
-  onSubmit(): any {
+  submitForm() : any {
       this.submitted = true;
         // stop here if form is invalid
         if (this.registerForm.invalid) {
@@ -93,7 +115,8 @@ const user={
   role:this.registerForm.value.role,
   matricule:matricule,
   etat:true,
-  date_d_inscription:new Date()
+  date_d_inscription:new Date(),
+  avatar:'null',
 }
 /* console.log(user) */
 
@@ -103,23 +126,52 @@ this.crudService.GetUtilisateurs().subscribe((res) => {
   res = res.filter((user:any) => user.email == this.mail); // filtrer les actives et les archives
   this.Utilisateur = res;
   console.log(this.Utilisateur.length);
-  if ((this.Utilisateur.length) == 0) {
 
-    this.crudService.AddUtilisateur(user).subscribe(
-      (res) => {
-        console.log('Data added successfully!');
-        console.log(res);
-         this.ngZone.run(() => this.router.navigateByUrl('/inscription'));
-         this.reussi = 'inscription reussi';
-         this.registerForm.reset();
-         this.submitted = false;
-         setInterval(() => { this.reussi = ''}, 3000);
-      });
+
+
+  if ((this.Utilisateur.length) == 0) {
+        if (this.select_tof == false) {
+               this.crudService.AddUtilisateur(user).subscribe(
+          (res) => {
+            console.log('Data added successfully!');
+            console.log(res);
+            this.ngZone.run(() => this.router.navigateByUrl('/inscription'));
+            this.reussi = 'inscription reussi';
+            this.registerForm.reset();
+            this.submitted = false;
+            setInterval(() => { this.reussi = ''}, 3000);
+          });
+        }
+        if (this.select_tof == true) {
+
+    this.crudService
+
+    .addUser(user.prenom, user.nom, user.email, user.password,
+      user.role, user.matricule, user.etat, user.date_d_inscription, this.registerForm.value.avatar)
+    .subscribe((event: HttpEvent<any>) => { console.log(this.registerForm.value.avatar);
+
+      switch (event.type) {
+        case HttpEventType.Response:
+          console.log('User successfully created!', event.body);
+          /*  this.percentDone = false; */
+          this.ngZone.run(() => this.router.navigateByUrl('/inscription'));
+          this.reussi = 'inscription reussi';
+          this.registerForm.reset();
+          this.submitted = false;
+          setInterval(() => { this.reussi = ''}, 3000);
+      }
+    });
+        }
+
+
+
+
   }
   else{
     this.mailExiste = "L'adresse mail existe déja";
     setInterval(() => { this.mailExiste = ''}, 3000);
   }
+
 })
 
 

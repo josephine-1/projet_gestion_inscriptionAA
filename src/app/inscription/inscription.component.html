@@ -15,7 +15,7 @@
             {{ mailExiste }}
           </span>
 
-          <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
+          <form [formGroup]="registerForm"  (ngSubmit)="submitForm()">
               <div class="form-group">
                   <label>nom</label>
                   <input type="text" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }" />
@@ -38,8 +38,8 @@
                 <select name="roles" id="roles" formControlName="role" class="form-control"[ngClass]="{ 'is-invalid': submitted && f['role'].errors }" class="form-select" id="validation04" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" required>
 
                   <option selected disabled value="">selectionner</option>
-                  <option value="administrateur" name='roles'>admin</option>
-                  <option value="utilisateur" name='roles'>user</option>
+                  <option value="administrateur" name='role'>admin</option>
+                  <option value="utilisateur" name='role'>user</option>
                 </select>
 
 
@@ -73,6 +73,16 @@
                     <div *ngIf="f['password2']['errors']['minlength']">Password must be at least 6 characters</div>
                 </div>
             </div> <br>
+             <!-- Image Preview -->
+           <!--  <div class="form-group">
+              <div class="preview" *ngIf="preview && preview !== null">
+                <img [src]="preview" [alt]="registerForm.value.name" />
+              </div>
+            </div> -->
+              <!-- File Input -->
+            <div class="form-group">
+              <input type="file" (change)="uploadFile($event)"/>
+            </div>
 
             <input type="hidden" formControlName="etat">
             <input type="hidden" formControlName="matricule">

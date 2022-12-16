@@ -51,6 +51,8 @@ constructor(private authService: AuthService,
             localStorage.setItem('prenom', data.prenom.toString());
             localStorage.setItem('nom', data.nom.toString());
             localStorage.setItem('matricule', data.matricule.toString());
+            localStorage.setItem('avatar', data.avatar.toString());
+            localStorage.setItem('email', data.email.toString());
             console.log(localStorage.getItem('prenom'))
             if (data.role == 'administrateur') {
               this.router.navigate(['/active'])

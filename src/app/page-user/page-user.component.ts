@@ -24,6 +24,7 @@ export class PageUserComponent implements OnInit {
   prenom!:any;
   nom!:any;
   matricule!:any
+  avatar:any
   etat:any = localStorage.getItem('token');
 
   constructor(){
@@ -33,6 +34,7 @@ export class PageUserComponent implements OnInit {
     this.prenom = localStorage.getItem('prenom');
     this.nom = localStorage.getItem('nom');
     this.matricule = localStorage.getItem('matricule');
+    this.avatar = localStorage.getItem('avatar');
   }
   deconnexion()
   {
@@ -42,5 +44,6 @@ export class PageUserComponent implements OnInit {
     localStorage.removeItem('prenom');
     localStorage.removeItem('nom');
     localStorage.removeItem('matricule');
+    localStorage.removeItem('email');
   }
 }

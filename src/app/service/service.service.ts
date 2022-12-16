@@ -18,15 +18,33 @@ export class CrudService {
   // Http Header
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(public httpClient: HttpClient ) {}
+  addUser(prenom: string, nom: string, email: string, password: string,  role: string,
+    matricule: string,  etat: boolean,  date_d_inscription: Date, profileImage: File): Observable<any> {
+    var formData: any = new FormData();
+    formData.append('prenom', prenom);
+    formData.append('nom', nom);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('role', role);
+    formData.append('matricule', matricule);
+    formData.append('etat', etat);
+    formData.append('date_d_inscription', date_d_inscription);
+    formData.append('avatar', profileImage);
+
+    return this.httpClient.post<Utilisateur>(`${this.REST_API}/create-user`, formData, {
+      reportProgress: true,
+      observe: 'events',
+    });
+  }
 
   // Add
-  AddUtilisateur(data: Utilisateur): Observable<any> {
+   AddUtilisateur(data: Utilisateur): Observable<any> {
     let API_URL = `${this.REST_API}/add-utilisateur`;
     return this.httpClient
       .post(API_URL, data)
       .pipe(catchError(this.handleError));
-  }
+  } 
 
   // Get all objects
   GetUtilisateurs():Observable<any> {

@@ -11,14 +11,16 @@ export class NavbarComponent {
   prenom!:any;
   nom!:any;
   matricule!:any
+  avatar!:any;
   etat:any = localStorage.getItem('token');
   constructor(){}
 
   ngOnInit(): void {
     this.list = list
-     this.prenom = localStorage.getItem('prenom');
+    this.prenom = localStorage.getItem('prenom');
     this.nom = localStorage.getItem('nom');
     this.matricule = localStorage.getItem('matricule');
+    this.avatar = localStorage.getItem('avatar');
 }
 /* active(active_:string)
       {
@@ -33,5 +35,7 @@ export class NavbarComponent {
       localStorage.removeItem('prenom');
       localStorage.removeItem('nom');
       localStorage.removeItem('matricule');
+      localStorage.removeItem('avatar');
+      localStorage.removeItem('email');
     }
 }

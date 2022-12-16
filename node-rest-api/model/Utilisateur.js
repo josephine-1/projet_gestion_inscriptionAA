@@ -13,7 +13,7 @@ let Utilisateur = new Schema(
       type: String,
     },
     email: {
-      type: String, require: true/* , unique: true */
+      type: String,/* , unique: true */
     },
     password: {
       type: String, require: true
@@ -29,7 +29,10 @@ let Utilisateur = new Schema(
     },
      date_d_inscription:{
       type: Date //la date d'inscription
-    }
+    },
+    avatar: {
+      type: String
+    },
   },
   {
     collection: "utilisateur",
@@ -40,3 +43,4 @@ Utilisateur.plugin(uniqueValidator);
 
 
 module.exports = mongoose.model("utilisateur", Utilisateur);
+
