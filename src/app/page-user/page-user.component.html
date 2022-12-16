@@ -49,12 +49,12 @@
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of Users | paginate:{itemsPerPage: 5, currentPage:p} | filter:searchText" class="text-center">
+        <tr *ngFor="let user of Utilisateur | paginate:{itemsPerPage: 5, currentPage:p} | filter:searchText" class="text-center">
 
           <td>{{ user.nom }}</td>
           <td>{{ user.prenom }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.telephone }}</td>
+          <td>{{ user.matricule }}</td>
           <td>{{ user.date_d_inscription}}</td>
         </tr>
       </tbody>

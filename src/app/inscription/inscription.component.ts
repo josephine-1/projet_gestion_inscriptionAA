@@ -24,6 +24,8 @@ export class InscriptionComponent implements OnInit{
   select_tof:boolean = false;
   percentDone?: any = 0;
   users: any[] = [];
+
+
   date: Date = new Date()
   constructor(public formBuilder: FormBuilder,
               private router: Router,
@@ -86,12 +88,16 @@ this.registerForm = this.formBuilder.group({
      let pass2 = (<HTMLInputElement>document.getElementById("pass2")).value;
          console.log(pass1 != pass2)
           if( pass1 != pass2)
-           {        this.verifPass = false;
+              {        this.verifPass = false;
               console.log(this.verifPass)
                this.registerForm = this.formBuilder.group(
-                   {          password:[''],
-                            password2:[''],        })
-                       setTimeout(()=>{ this.verifPass = true}, 3000);             }  }
+             {          password:[''],
+                    password2:[''],
+             })
+                      setTimeout(()=>{ this.verifPass = true}, 3000);
+                        }
+                        this.mailExiste = '';
+             }
 
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
@@ -133,6 +139,7 @@ this.crudService.GetUtilisateurs().subscribe((res) => {
         if (this.select_tof == false) {
                this.crudService.AddUtilisateur(user).subscribe(
           (res) => {
+
             console.log('Data added successfully!');
             console.log(res);
             this.ngZone.run(() => this.router.navigateByUrl('/inscription'));

@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import UserJson from '../page-user/user.json';
+import { CrudService } from '../service/service.service';
 
-interface USERS {
-  id: Number;
-  prenom: String;
-  nom: String;
-  email: String;
-  telephone: string;
-  date_d_inscription:string;
-}
 
 @Component({
   selector: 'app-page-user',
@@ -19,22 +11,31 @@ export class PageUserComponent implements OnInit {
 
   p:number=1;
   searchText!:string;
-  Users: USERS[] = UserJson;
-
+  Utilisateur: any = [];
   prenom!:any;
   nom!:any;
   matricule!:any
   avatar:any
   etat:any = localStorage.getItem('token');
 
-  constructor(){
-    console.log(this.Users);
+  constructor( private crudService: CrudService){
+
   }
   ngOnInit(): void {
+    this.getAllUsers();
     this.prenom = localStorage.getItem('prenom');
     this.nom = localStorage.getItem('nom');
     this.matricule = localStorage.getItem('matricule');
     this.avatar = localStorage.getItem('avatar');
+  }
+
+  getAllUsers() {
+    this.crudService.GetUtilisateurs().subscribe((res) => {
+      console.log(res);
+      res = res.filter((user:any) => user.etat == true && user._id != localStorage.getItem('id')); // filtrer les actives et les archives
+      this.Utilisateur = res;
+
+    });
   }
   deconnexion()
   {
