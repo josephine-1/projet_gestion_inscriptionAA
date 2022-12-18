@@ -4,7 +4,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <img *ngIf="avatar != 'null'" [src]="avatar" alt="">
-          <img *ngIf="avatar == 'null'" src="../../assets/avatar.jpg" alt="">
+          <div *ngIf="avatar == 'null'" class="forimg"><div class="forimg_">{{prenom[0].toUpperCase()}}{{nom[0]}}</div></div>
         </li>
         <div class="info">
           <p>{{prenom}}</p>
@@ -55,7 +55,7 @@
           <td>{{ user.prenom }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.matricule }}</td>
-          <td>{{ user.date_d_inscription}}</td>
+          <td>{{ user.date_d_inscription | date:'short' }}</td>
         </tr>
       </tbody>
     </table>
